@@ -1,0 +1,692 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <style>
+        body {
+            background-color: #A5C8D6;
+            color: #1B2631;
+            font-family: "Clarkson", Helvetica, sans-serif;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            background-color: #1B2631;
+            color: #A5C8D6;
+            height: 100px;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .navbar a {
+            color: #A5C8D6;
+            font-weight: bold;
+        }
+        .container {
+            background-color: #F0F4F8;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        h2 {
+            color: #3F4E4F;
+            font-weight: bold;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #3F4E4F;
+            border-color: #3F4E4F;
+            color: #F0F4F8;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #1B2631;
+            border-color: #1B2631;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .separator {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .separator::before, .separator::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #3F4E4F;
+        }
+        .separator span {
+            padding: 0 10px;
+            color: #3F4E4F;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #3F4E4F;
+            padding: 8px;
+            text-align: left;
+        }
+    </style> -->
+    <!-- <style>
+        body {
+            background-color: #A5C8D6;
+            color: #1B2631;
+            font-family: "Clarkson", Helvetica, sans-serif;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            background-color: #1B2631;
+            color: #A5C8D6;
+            height: 100px;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .navbar a {
+            color: #A5C8D6;
+            font-weight: bold;
+        }
+        .container {
+            background-color: #F0F4F8;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 80%; /* Set width to 80% of screen */
+            max-width: 1200px; /* Max width of 1200px to fit a laptop screen */
+            margin: 50px auto 0;
+        }
+        h2 {
+            color: #3F4E4F;
+            font-weight: bold;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #3F4E4F;
+            border-color: #3F4E4F;
+            color: #F0F4F8;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #1B2631;
+            border-color: #1B2631;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .separator {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .separator::before, .separator::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #3F4E4F;
+        }
+        .separator span {
+            padding: 0 10px;
+            color: #3F4E4F;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #3F4E4F;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Profile, Perfected</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h2>Get Started</h2>
+        <div class="upload-section">
+            <h4>Upload Your Resume</h4>
+            <input type="file" class="form-control">
+            <button class="btn btn-primary mt-3">Upload</button>
+        </div>
+        <div class="separator"><span>OR</span></div>
+        <div class="manual-section">
+            <h4>Enter Details Manually</h4>
+            <form>
+                <h5>Personal Details</h5>
+                <label>Full Name</label>
+                <input type="text" class="form-control mb-2">
+                <label>Phone</label>
+                <input type="text" class="form-control mb-2">
+                <label>Email</label>
+                <input type="email" class="form-control mb-2">
+                <label>Location</label>
+                <input type="text" class="form-control mb-2">
+                <label>LinkedIn</label>
+                <input type="text" class="form-control mb-2">
+                <label>GitHub</label>
+                <input type="text" class="form-control mb-2">
+                
+                <h5>Summary</h5>
+                <textarea class="form-control mb-2" placeholder="Brief professional overview"></textarea>
+                
+                <h5>Education</h5>
+                <table>
+                    <tr>
+                        <th>Degree Name</th>
+                        <th>University</th>
+                        <th>Year</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                    </tr>
+                </table>
+                
+                <h5>Technical Skills</h5>
+                <label>Frontend Technologies</label>
+                <input type="text" class="form-control mb-2">
+                <label>Backend Technologies</label>
+                <input type="text" class="form-control mb-2">
+                <label>Databases</label>
+                <input type="text" class="form-control mb-2">
+                <label>Tools & Platforms</label>
+                <input type="text" class="form-control mb-2">
+                
+                <h5>Work Experience</h5>
+                <table>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Company</th>
+                        <th>Duration</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                    </tr>
+                </table>
+                
+                <h5>Projects</h5>
+                <table>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Technologies Used</th>
+                        <th>Description & Impact</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                    </tr>
+                </table>
+                
+                <h5>Certifications</h5>
+                <table>
+                    <tr>
+                        <th>Certification Name</th>
+                        <th>Issuing Organization</th>
+                        <th>Year</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control"></td>
+                    </tr>
+                </table>
+                
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
+        </div>
+    </div> -->
+<!-- </body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #A5C8D6;
+            color: #1B2631;
+            font-family: "Clarkson", Helvetica, sans-serif;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            background-color: #1B2631;
+            height: 90px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            position: fixed;
+        }
+        .navbar a {
+            color: #F0F4F8 !important;
+            font-weight: bold;
+        }
+        .container {
+            background-color: #F0F4F8;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            margin-top: 120px;
+        }
+        .option-card {
+            width: 300px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #1B2631;
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .option-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Profile, Perfected</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="getstarted.html">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center">
+        <h1>Get Started</h1>
+        <p>Select how you want to create your portfolio.</p>
+        
+        <div class="d-flex justify-content-center gap-4 mt-4">
+            <div class="option-card" onclick="window.location.href='uploadresume.html'">
+                <h3>Upload Resume</h3>
+                <p>Upload your existing resume to generate a portfolio.</p>
+            </div>
+            <div class="option-card" onclick="window.location.href='manual.html'">
+                <h3>Enter Details Manually</h3>
+                <p>Fill out the details step by step to build your portfolio.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #A5C8D6; /* Celeste */
+            color: #1B2631; /* Midnight */
+            font-family: "Clarkson", Helvetica, sans-serif;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            background-color: #1B2631; /* Midnight */
+            color: #F0F4F8; /* Light Grey */
+            height: 90px; /* Increased navbar height */
+            padding: 10px 10px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            position: fixed;
+        }
+        .navbar .navbar-brand {
+            text-align: center;
+            width: 100%;
+            position: relative;
+            top: -10px; /* Move text slightly above */
+        }
+        .navbar a {
+            color: #F0F4F8 !important;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #A5C8D6 !important;
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        .container {
+            padding-top: 100px; /* Offset content due to fixed navbar */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Profile, Perfected</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Get Started</h2>
+        <p>Choose an option to begin creating your portfolio:</p>
+        <div class="d-flex flex-column align-items-center">
+            <button class="btn btn-primary m-2" onclick="window.location.href='upload.html'">Upload Resume</button>
+            <button class="btn btn-secondary m-2" onclick="window.location.href='manual-entry.html'">Enter Details Manually</button>
+        </div>
+    </div>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #A5C8D6; /* Celeste */
+            color: #1B2631; /* Midnight */
+            font-family: "Clarkson", Helvetica, sans-serif;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            background-color: #1B2631; /* Midnight */
+            color: #F0F4F8; /* Light Grey */
+            height: 90px; /* Increased navbar height */
+            padding: 10px 10px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar .navbar-brand {
+            text-align: center;
+            width: 100%;
+            position: relative;
+            top: -10px; /* Move text slightly above */
+        }
+        .navbar a {
+            color: #F0F4F8 !important;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #A5C8D6 !important;
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        .container {
+            padding-top: 100px; /* Offset content due to fixed navbar */
+        }
+        .options-container {
+            background-color: #FFFFFF; /* White */
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+        .midnight-section {
+            background-color: #1B2631; /* Midnight */
+            border-radius: 10px;
+            padding: 30px;
+        }
+        .option-card {
+            background-color: #F0F4F8;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            width: 300px;
+        }
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .option-card h3 {
+            color: #1B2631;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .option-card p {
+            color: #495057;
+        }
+        .section-title {
+            color: #1B2631; /* Midnight */
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Profile, Perfected</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Get Started</h2>
+        
+        <div class="options-container">
+            <p class="text-center section-title">Select how you want to create your portfolio.</p>
+            
+            <div class="midnight-section">
+                <div class="d-flex justify-content-center gap-4">
+                    <div class="option-card" onclick="window.location.href='uploadresume.html'">
+                        <h3>Upload Resume</h3>
+                        <p>Upload your existing resume to generate a portfolio.</p>
+                    </div>
+                    <div class="option-card" onclick="window.location.href='manual.html'">
+                        <h3>Enter Details Manually</h3>
+                        <p>Fill out the details step by step to build your portfolio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #A5C8D6; /* Celeste */
+            color: #1B2631; /* Midnight */
+            font-family: "Clarkson", Helvetica, sans-serif;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            background-color: #1B2631; /* Midnight */
+            color: #3F4E4F; /* Dark Grey */
+            height: 90px; /* Increased navbar height */
+            padding: 10px 10px; /* Adjusted padding */
+            width: 100%; /* Full-length navbar */
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            position: fixed; /* Fixed positioning to keep navbar at top */
+        }
+        .navbar a {
+            color: #F0F4F8 !important; /* Light color for better visibility */
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #A5C8D6 !important; /* Celeste */
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        .navbar .container {
+            background-color: transparent; /* Make navbar container transparent */
+            box-shadow: none;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+        .page-container {
+            padding-top: 120px; /* Offset content due to fixed navbar */
+        }
+        .options-container {
+            background-color: #FFFFFF; /* White */
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+        .option-card {
+            background-color: #1B2631;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            width: 500px;
+        }
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background-color: #A5C8D6; /* Celeste */
+        }
+        .option-card h3 {
+            color: #F0F4F8;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .option-card p {
+            color:#495057;
+        }
+        .section-title {
+            color:#495057;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #3F4E4F; /* Dark Grey */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Profile, Perfected</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="page-container container">
+        <h2 class="text-center mb-4">Select how you want to create your portfolio.</h2>
+        <div class="options-container">
+            <!-- <p class="text-center section-title">Select how you want to create your portfolio.</p> -->
+            
+            <div class="d-flex justify-content-center gap-4">
+                <div class="option-card" onclick="window.location.href='resume.html'">
+                    <h3>Upload Resume</h3>
+                    <p>Upload your existing resume to generate a portfolio.</p>
+                </div>
+                <div class="option-card" onclick="window.location.href='manual.html'">
+                    <h3>Enter Details</h3>
+                    <p>Fill out the details step by step to build your portfolio.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
