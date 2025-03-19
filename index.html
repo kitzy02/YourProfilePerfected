@@ -65,16 +65,28 @@
         function showInputOptions() {
             document.getElementById('inputOptions').style.display = 'block';
         }
-
+    
         function showResumeUpload() {
             document.getElementById('resumeSection').style.display = 'block';
             document.getElementById('manualFormSection').style.display = 'none';
         }
-
+    
         function showManualForm() {
             document.getElementById('manualFormSection').style.display = 'block';
             document.getElementById('resumeSection').style.display = 'none';
         }
-    </script>
+    
+        // Handle Resume Form Submission
+        document.getElementById("resumeForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            window.location.href = "generateportfolio.html"; // Redirect to generated portfolio page
+        });
+    
+        // Handle Manual Form Submission
+        document.getElementById("manualForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            window.location.href = "generateportfolio.html"; // Redirect to generated portfolio page
+        });
+    </script>    
 </body>
 </html>
