@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -162,7 +162,7 @@
         <div class="divider"></div>
 
         <!-- Education Details Section -->
-        <div class="section">
+        <!-- <div class="section">
             <h3>Education Details</h3>
             <table>
                 <tr>
@@ -218,5 +218,458 @@
         </div>
     </div>
     
+</body>
+</html> --> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #A5C8D6;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1B2631;
+        }
+
+        body {
+            background-color: #A5C8D6; /* Celeste */
+            color: #1B2631; /* Midnight */
+            font-family: "Clarkson", Helvetica, sans-serif;
+            scroll-behavior: smooth;
+            overflow-y: scroll; /* Always show vertical scrollbar */
+        }
+        .navbar {
+            background-color: #1B2631; /* Midnight */
+            color: #3F4E4F; /* Dark Grey */
+            height: 70px; /* Reduced navbar height for laptop view */
+            padding: 5px 10px; /* Reduced padding */
+            width: 100%; /* Full-length navbar */
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            position: fixed; /* Fixed positioning to keep navbar at top */
+        }
+        .navbar a {
+            color: #F0F4F8 !important; /* Light color for better visibility */
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #A5C8D6 !important; /* Celeste */
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        .navbar .container {
+            background-color: transparent; /* Make navbar container transparent */
+            box-shadow: none;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+        .page-container {
+            padding-top: 90px; /* Reduced offset content for laptop view */
+            max-width: 1200px; /* Optimized container width for laptops */
+            width: 90%; /* Use percentage for better responsiveness */
+            margin: 0 auto;
+        }
+        .option-card {
+            background-color: #FFFFFF;
+            border-radius: 12px; /* Slightly reduced */
+            padding: 20px; /* Reduced padding */
+            margin-bottom: 20px; /* Reduced margin */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        .option-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+        .option-card h3 {
+            color: #1B2631;
+            margin-bottom: 15px;
+            font-weight: 600;
+            border-bottom: 2px solid #E9ECEF;
+            padding-bottom: 8px;
+            font-size: 1.3rem; /* Better size for laptop screens */
+        }
+        .section-divider {
+            height: 1px;
+            background-color: #CED4DA;
+            margin: 12px 0 20px 0;
+            width: 100%;
+        }
+        h1, h2 {
+            color: #3F4E4F; /* Dark Grey */
+            font-weight: bold;
+            font-size: 1.8rem; /* Better size for laptop screens */
+        }
+        /* Make tables better for laptop view */
+        .table-responsive {
+            overflow-x: auto;
+            max-height: 300px; /* Limit height for laptops */
+            overflow-y: auto; /* Allow vertical scrolling within tables */
+            margin-bottom: 10px;
+        }
+        .table th {
+            position: sticky;
+            top: 0;
+            background-color: #f8f9fa;
+            z-index: 10;
+        }
+        .table td {
+            vertical-align: middle;
+        }
+        .form-control {
+            padding: 0.375rem 0.5rem; /* Slightly smaller padding */
+            font-size: 0.9rem; /* Slightly smaller font */
+        }
+        /* Photo upload styling - adjusted for laptop */
+        .photo-upload {
+            border: 2px dashed #A5C8D6;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .photo-upload p {
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .page-header {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        .submit-container {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #1B2631;
+            border-color: #1B2631;
+            padding: 8px 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #3F4E4F;
+            border-color: #3F4E4F;
+            transform: scale(1.05);
+        }
+        /* Row spacing for better display on laptops */
+        .row {
+            margin-bottom: 5px;
+        }
+        /* Textarea height adjustment */
+        textarea.form-control {
+            height: auto;
+            min-height: 80px;
+        }
+        /* Add button for tables */
+        .add-row-btn {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 0.85rem;
+        }
+        
+        /* Media query specifically for laptops */
+        @media (min-width: 992px) and (max-width: 1366px) {
+            .page-container {
+                padding-top: 80px;
+                max-width: 95%;
+            }
+            .option-card {
+                padding: 18px;
+            }
+            .mb-3 {
+                margin-bottom: 0.8rem !important;
+            }
+            .table td, .table th {
+                padding: 0.5rem;
+            }
+            .col-md-4 {
+                padding-left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Profile, Perfected</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="page-container container">
+        <div class="page-header">
+            <h2>Start by filling out your basic details</h2>
+        </div>
+        
+        <form>
+            <!-- Personal Details Section -->
+            <div class="option-card">
+                <h3>Personal Details</h3>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="middleName" class="form-label">Middle Name</label>
+                                    <input type="text" class="form-control" id="middleName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" id="phone">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="location" class="form-label">Location</label>
+                                    <input type="text" class="form-control" id="location">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="linkedin" class="form-label">LinkedIn</label>
+                                    <input type="text" class="form-control" id="linkedin">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="github" class="form-label">GitHub</label>
+                                    <input type="text" class="form-control" id="github">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-divider"></div>
+                        <div class="mb-3">
+                            <label for="summary" class="form-label">Summary</label>
+                            <textarea class="form-control" id="summary" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-center justify-content-center">
+                        <div class="photo-upload">
+                            <p>Upload Your Photo</p>
+                            <input type="file" class="form-control" id="photoUpload">
+                            <p class="mt-2 text-muted small">Recommended: Square image, 300x300px</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Details Section -->
+            <div class="option-card">
+                <h3>Education Details</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>School/University</th>
+                                <th>Degree</th>
+                                <th>Field of Study</th>
+                                <th>Graduation Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-secondary add-row-btn">+ Add Education</button>
+            </div>
+
+            <!-- Work Experience Section -->
+            <div class="option-card">
+                <h3>Work Experience</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Company</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-secondary add-row-btn">+ Add Experience</button>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="option-card">
+                <h3>Projects</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Project Name</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="text" class="form-control"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-secondary add-row-btn">+ Add Project</button>
+            </div>
+
+            <!-- Additional Details Section -->
+            <div class="option-card">
+                <h3>Additional Details</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label for="hobbies" class="form-label"><strong>Hobbies:</strong></label>
+                            <input type="text" class="form-control" id="hobbies">
+                        </div>
+                        <div class="section-divider"></div>
+                        <div class="mb-3">
+                            <label for="languages" class="form-label"><strong>Languages Spoken:</strong></label>
+                            <input type="text" class="form-control" id="languages">
+                        </div>
+                        <div class="section-divider"></div>
+                        <div class="mb-3">
+                            <label for="activities" class="form-label"><strong>Extra-Curricular Activities:</strong></label>
+                            <input type="text" class="form-control" id="activities">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <a href="generateportfolio.html" class="btn btn-primary btn-lg">Generate Portfolio</a>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // Script to scroll to top on page reload
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        }
+        
+        // Force scroll to top on page refresh
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+        });
+        
+        // Add row buttons functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const addRowButtons = document.querySelectorAll('.add-row-btn');
+            
+            addRowButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const table = this.previousElementSibling.querySelector('table');
+                    const tbody = table.querySelector('tbody');
+                    const lastRow = tbody.querySelector('tr:last-child');
+                    const newRow = lastRow.cloneNode(true);
+                    
+                    // Clear inputs in the new row
+                    newRow.querySelectorAll('input').forEach(input => {
+                        input.value = '';
+                    });
+                    
+                    tbody.appendChild(newRow);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

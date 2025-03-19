@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #A5C8D6; /* Celeste */
+            color: #1B2631; /* Midnight */
+            font-family: "Clarkson", Helvetica, sans-serif;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            background-color: #1B2631; /* Midnight */
+            color: #3F4E4F; /* Dark Grey */
+            height: 90px; /* Increased navbar height */
+            padding: 10px 10px; /* Adjusted padding */
+            width: 100%; /* Full-length navbar */
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            position: fixed; /* Fixed positioning to keep navbar at top */
+        }
+        .navbar a {
+            color: #F0F4F8 !important; /* Light color for better visibility */
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #A5C8D6 !important; /* Celeste */
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        .navbar .container {
+            background-color: transparent; /* Make navbar container transparent */
+            box-shadow: none;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+        .page-container {
+            padding-top: 120px; /* Offset content due to fixed navbar */
+        }
+        .options-container {
+            background-color: #FFFFFF; /* White */
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+            align-items: center;
+        }
+        .option-card {
+            background-color: #1B2631;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            width: 500px;
+        }
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background-color: #A5C8D6; /* Celeste */
+        }
+        .option-card h3 {
+            color: #F0F4F8;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .option-card p {
+            color:#495057;
+        }
+        .section-title {
+            color:#495057;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #3F4E4F; /* Dark Grey */
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #3F4E4F; /* Dark Grey */
+            border-color: #3F4E4F;
+            color: #F0F4F8; /* Light Grey */
+            transition: 0.3s;
+            align-self: center;
+        }
+        .btn-primary:hover {
+            background-color: #1B2631; /* Midnight */
+            border-color: #1B2631;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Profile, Perfected</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="page-container container">
+        <h2 class="text-center mb-4">Enter your personalised username</h2>
+        <div class="options-container text-center">
+            <input type="text" id="usernameInput" placeholder="Enter your username">
+            <button class="btn btn-primary btn-lg mt-3" onclick="saveUsername()">Submit</button>
+            <p id="greetingMessage"></p>
+        </div>
+    </div>
+
+    <script>
+        function saveUsername() {
+            const username = document.getElementById("usernameInput").value;
+            if (username) {
+                localStorage.setItem("username", username); // Store in local storage
+                window.location.href = "getstarted.html"; // Redirect to gettingstarted.html
+            } else {
+                alert("Please enter a username.");
+            }
+        }
+    </script>
+</body>
+</html>
