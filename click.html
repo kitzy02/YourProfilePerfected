@@ -59,6 +59,7 @@
     <div class="container">
         <div id="personalDetails" class="section">
             <h2>Personal Details</h2>
+            <img id="profilePhoto" alt="Profile Photo" class="profile-image">
             <p><strong>Name:</strong> <span id="name"></span></p>
             <p><strong>Email:</strong> <span id="email"></span></p>
             <p><strong>Phone:</strong> <span id="phone"></span></p>
@@ -94,46 +95,57 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const data = JSON.parse(localStorage.getItem("portfolioData")) || {};
-            if (!data.firstName) {
-                alert("No portfolio data found.");
-                window.location.href = "index.html";
-                return;
-            }
-            document.getElementById("name").textContent = (data.firstName || "") + " " + (data.lastName || "");
-            document.getElementById("email").textContent = data.email || "N/A";
-            document.getElementById("phone").textContent = data.phone || "N/A";
-            document.getElementById("location").textContent = data.location || "N/A";
-            document.getElementById("linkedin").textContent = data.linkedin || "N/A";
-            document.getElementById("linkedin").href = data.linkedin || "#";
-            document.getElementById("github").textContent = data.github || "N/A";
-            document.getElementById("github").href = data.github || "#";
-            document.getElementById("summary").textContent = data.summary || "N/A";
-            document.getElementById("hobbies").textContent = data.hobbies || "N/A";
-            document.getElementById("languages").textContent = data.languages || "N/A";
-            document.getElementById("activities").textContent = data.activities || "N/A";
+    const data = JSON.parse(localStorage.getItem("portfolioData")) || {};
+    if (!data.firstName) {
+        alert("No portfolio data found.");
+        window.location.href = "index.html";
+        return;
+    }
+    
+    // Handle the photo display
+    if (data.photo) {
+        const photoElement = document.getElementById("profilePhoto"); 
+        if (photoElement) {
+            photoElement.src = data.photo;
+        }
+    }
+    
+    document.getElementById("name").textContent = (data.firstName || "") + " " + (data.lastName || "");
+    document.getElementById("email").textContent = data.email || "N/A";
+    document.getElementById("phone").textContent = data.phone || "N/A";
+    document.getElementById("location").textContent = data.location || "N/A";
+    document.getElementById("linkedin").textContent = data.linkedin || "N/A";
+    document.getElementById("linkedin").href = data.linkedin || "#";
+    document.getElementById("github").textContent = data.github || "N/A";
+    document.getElementById("github").href = data.github || "#";
+    document.getElementById("summary").textContent = data.summary || "N/A";
+    document.getElementById("hobbies").textContent = data.hobbies || "N/A";
+    document.getElementById("languages").textContent = data.languages || "N/A";
+    document.getElementById("activities").textContent = data.activities || "N/A";
+    
+    // Remove the unnecessary displayImage function since we're handling the photo above
+    
+    const educationList = document.getElementById("educationList");
+    (data.education || []).forEach(edu => {
+        const li = document.createElement("li");
+        li.textContent = `${edu.degree || ''} in ${edu.fieldOfStudy || ''}, ${edu.school || ''} (${edu.graduationYear || ''})`;
+        educationList.appendChild(li);
+    });
 
-            const educationList = document.getElementById("educationList");
-            (data.education || []).forEach(edu => {
-                const li = document.createElement("li");
-                li.textContent = `${edu.degree || ''} in ${edu.fieldOfStudy || ''}, ${edu.school || ''} (${edu.graduationYear || ''})`;
-                educationList.appendChild(li);
-            });
+    const workList = document.getElementById("workList");
+    (data.workExperience || []).forEach(work => {
+        const li = document.createElement("li");
+        li.textContent = `${work.jobTitle || ''} at ${work.company || ''} (${work.duration || ''})`;
+        workList.appendChild(li);
+    });
 
-            const workList = document.getElementById("workList");
-            (data.workExperience || []).forEach(work => {
-                const li = document.createElement("li");
-                li.textContent = `${work.jobTitle || ''} at ${work.company || ''} (${work.duration || ''})`;
-                workList.appendChild(li);
-            });
-
-            const projectList = document.getElementById("projectList");
-            (data.projects || []).forEach(proj => {
-                const li = document.createElement("li");
-                li.textContent = `${proj.projectName || ''}: ${proj.description || ''}`;
-                projectList.appendChild(li);
-            });
-        });
+    const projectList = document.getElementById("projectList");
+    (data.projects || []).forEach(proj => {
+        const li = document.createElement("li");
+        li.textContent = `${proj.projectName || ''}: ${proj.description || ''}`;
+        projectList.appendChild(li);
+    });
+});
     </script>
 </body>
 </html>

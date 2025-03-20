@@ -670,7 +670,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
 document.getElementById("submitButton").addEventListener("click", function () {
     const formData = {
         firstName: document.getElementById("firstName").value,
@@ -688,57 +687,148 @@ document.getElementById("submitButton").addEventListener("click", function () {
         education: [],
         workExperience: [],
         projects: [],
+        photo: null // Initialize photo property
     };
 
-    // Capture education data
-    const educationRows = document.querySelectorAll(".option-card:nth-of-type(2) tbody tr");
-    educationRows.forEach(row => {
-        // Skip empty rows
-        if (!row.querySelector("td:nth-child(1) input").value) return;
+    // Get the uploaded file
+    const photoInput = document.getElementById("photoUpload");
+    if (photoInput.files && photoInput.files[0]) {
+        // Using FileReader to convert the image to a data URL
+        const reader = new FileReader();
         
-        const rowData = {
-            school: row.querySelector("td:nth-child(1) input").value,
-            degree: row.querySelector("td:nth-child(2) input").value,
-            fieldOfStudy: row.querySelector("td:nth-child(3) input").value,
-            graduationYear: row.querySelector("td:nth-child(4) input").value
+        reader.onload = function(e) {
+            formData.photo = e.target.result; // Store the image as a data URL
+            
+            // Continue with saving all form data and redirecting
+            saveFormDataAndRedirect(formData);
         };
-        formData.education.push(rowData);
-    });
-
-    // Capture work experience data
-    const workRows = document.querySelectorAll(".option-card:nth-of-type(3) tbody tr");
-    workRows.forEach(row => {
-        // Skip empty rows
-        if (!row.querySelector("td:nth-child(1) input").value) return;
         
-        const rowData = {
-            jobTitle: row.querySelector("td:nth-child(1) input").value,
-            company: row.querySelector("td:nth-child(2) input").value,
-            duration: row.querySelector("td:nth-child(3) input").value
-        };
-        formData.workExperience.push(rowData);
-    });
+        // Read the file as a data URL (base64 encoded string)
+        reader.readAsDataURL(photoInput.files[0]);
+    } else {
+        // No photo was uploaded, continue with the form submission
+        saveFormDataAndRedirect(formData);
+    }
+    
+    function saveFormDataAndRedirect(data) {
+        // Capture education data
+        const educationRows = document.querySelectorAll(".option-card:nth-of-type(2) tbody tr");
+        educationRows.forEach(row => {
+            // Skip empty rows
+            if (!row.querySelector("td:nth-child(1) input").value) return;
+            
+            const rowData = {
+                school: row.querySelector("td:nth-child(1) input").value,
+                degree: row.querySelector("td:nth-child(2) input").value,
+                fieldOfStudy: row.querySelector("td:nth-child(3) input").value,
+                graduationYear: row.querySelector("td:nth-child(4) input").value
+            };
+            data.education.push(rowData);
+        });
 
-    // Capture project data
-    const projectRows = document.querySelectorAll(".option-card:nth-of-type(4) tbody tr");
-    projectRows.forEach(row => {
-        // Skip empty rows
-        if (!row.querySelector("td:nth-child(1) input").value) return;
-        
-        const rowData = {
-            projectName: row.querySelector("td:nth-child(1) input").value,
-            description: row.querySelector("td:nth-child(2) input").value
-        };
-        formData.projects.push(rowData);
-    });
+        // Capture work experience data
+        const workRows = document.querySelectorAll(".option-card:nth-of-type(3) tbody tr");
+        workRows.forEach(row => {
+            // Skip empty rows
+            if (!row.querySelector("td:nth-child(1) input").value) return;
+            
+            const rowData = {
+                jobTitle: row.querySelector("td:nth-child(1) input").value,
+                company: row.querySelector("td:nth-child(2) input").value,
+                duration: row.querySelector("td:nth-child(3) input").value
+            };
+            data.workExperience.push(rowData);
+        });
 
-    // Save form data in localStorage
-    localStorage.setItem("portfolioData", JSON.stringify(formData));
+        // Capture project data
+        const projectRows = document.querySelectorAll(".option-card:nth-of-type(4) tbody tr");
+        projectRows.forEach(row => {
+            // Skip empty rows
+            if (!row.querySelector("td:nth-child(1) input").value) return;
+            
+            const rowData = {
+                projectName: row.querySelector("td:nth-child(1) input").value,
+                description: row.querySelector("td:nth-child(2) input").value
+            };
+            data.projects.push(rowData);
+        });
 
-    // Redirect to a new page or show confirmation
-    alert("Portfolio Data Saved Successfully!");
-    window.location.href = "generateportfolio.html"; // Redirect to the portfolio page
+        // Save form data in localStorage
+        localStorage.setItem("portfolioData", JSON.stringify(data));
+
+        // Redirect to a new page or show confirmation
+        alert("Portfolio Data Saved Successfully!");
+        window.location.href = "generateportfolio.html"; // Redirect to the portfolio page
+    }
 });
+// document.getElementById("submitButton").addEventListener("click", function () {
+//     const formData = {
+//         firstName: document.getElementById("firstName").value,
+//         lastName: document.getElementById("lastname").value,
+//         email: document.getElementById("email").value,
+//         phone: document.getElementById("phone").value,
+//         location: document.getElementById("location").value,
+//         leetcode: document.getElementById("leetcode").value,
+//         linkedin: document.getElementById("linkedin").value,
+//         github: document.getElementById("github").value,
+//         summary: document.getElementById("summary").value,
+//         hobbies: document.getElementById("hobbies").value,
+//         languages: document.getElementById("languages").value,
+//         activities: document.getElementById("activities").value,
+//         education: [],
+//         workExperience: [],
+//         projects: [],
+//     };
+
+//     // Capture education data
+//     const educationRows = document.querySelectorAll(".option-card:nth-of-type(2) tbody tr");
+//     educationRows.forEach(row => {
+//         // Skip empty rows
+//         if (!row.querySelector("td:nth-child(1) input").value) return;
+        
+//         const rowData = {
+//             school: row.querySelector("td:nth-child(1) input").value,
+//             degree: row.querySelector("td:nth-child(2) input").value,
+//             fieldOfStudy: row.querySelector("td:nth-child(3) input").value,
+//             graduationYear: row.querySelector("td:nth-child(4) input").value
+//         };
+//         formData.education.push(rowData);
+//     });
+
+//     // Capture work experience data
+//     const workRows = document.querySelectorAll(".option-card:nth-of-type(3) tbody tr");
+//     workRows.forEach(row => {
+//         // Skip empty rows
+//         if (!row.querySelector("td:nth-child(1) input").value) return;
+        
+//         const rowData = {
+//             jobTitle: row.querySelector("td:nth-child(1) input").value,
+//             company: row.querySelector("td:nth-child(2) input").value,
+//             duration: row.querySelector("td:nth-child(3) input").value
+//         };
+//         formData.workExperience.push(rowData);
+//     });
+
+//     // Capture project data
+//     const projectRows = document.querySelectorAll(".option-card:nth-of-type(4) tbody tr");
+//     projectRows.forEach(row => {
+//         // Skip empty rows
+//         if (!row.querySelector("td:nth-child(1) input").value) return;
+        
+//         const rowData = {
+//             projectName: row.querySelector("td:nth-child(1) input").value,
+//             description: row.querySelector("td:nth-child(2) input").value
+//         };
+//         formData.projects.push(rowData);
+//     });
+
+//     // Save form data in localStorage
+//     localStorage.setItem("portfolioData", JSON.stringify(formData));
+
+//     // Redirect to a new page or show confirmation
+//     alert("Portfolio Data Saved Successfully!");
+//     window.location.href = "generateportfolio.html"; // Redirect to the portfolio page
+// });
     </script>
 </body>
 </html>

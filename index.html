@@ -466,32 +466,45 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
     <title>Your Profile, Perfected</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-        /* Enhanced scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 12px;
-            height: 12px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #bb6fd8, #CBDDEC);
-            border-radius: 10px;
-            border: 2px solid #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(45deg, #a55bc4, #b8d0e4);
-            cursor: pointer;
-        }
-        /* Firefox scrollbar styling */
-        html {
-            scrollbar-width: thin;
-            scrollbar-color: #bb6fd8 #f1f1f1;
-        }
+        /* Scrollbar Width */
+::-webkit-scrollbar {
+    width: 10px;  /* Standard scrollbar width */
+    height: 10px; /* Horizontal scrollbar (if needed) */
+}
+
+/* Scrollbar Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Scrollbar Thumb (Draggable Part) */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #bb6fd8, #3F4E4F);
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+}
+
+/* Scrollbar Thumb Hover Effect */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #a55bc4, #b8d0e4);
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin; /* Firefox support */
+    scrollbar-color: #bb6fd8 #f1f1f1;
+}
+
+/* Prevent horizontal scrolling */
+body {
+    overflow-x: hidden;
+}
+
         
         body {
             background-color: #CBDDEC;
@@ -581,8 +594,8 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
         }
         
         .hero-content {
-            width: 100%;
-            max-width: 600px;
+            width: 800px;
+           
             text-align: left;
             padding-top: 20px; /* Add some top padding */
         }
@@ -591,16 +604,31 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
             justify-content: flex-end; /* Align to right */
             width: 100%;
             margin-top: 20px;
-            padding-top: 190px;
+            padding-top: 330px;
+            padding-left: 50px;
             
         }
-        .hero-image-container-second{
-            display: flex;
-            justify-content: flex-end; /* Align to right */
-            width: 100%;
-            margin-top: 20px;
-            
-        }
+        .hero-image-container-second {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    width: 100%;
+    margin-top: 20px;
+}
+
+.hero-image-second {
+    width: 650px !important;  /* Large width */
+    height: 350px !important; /* Large height */
+    max-width: none !important; /* Prevent Bootstrap from shrinking it */
+    max-height: none !important; /* Ensure full height */
+    border-radius: 10px !important; /* Remove any rounding */
+    object-fit:fill; /* Ensure it fills the rectangle properly */
+    display: block; /* Prevent inline styling conflicts */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 6px solid #3F4E4F; /* Dark grey border */
+}
+
+
         .hero-image {
             width: 350px;
             height: 250px;
@@ -653,14 +681,10 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
                 margin-top: 0;
             }
         }
-        .hero-image-second{
-            width: 100px;
-            height: 50px;
-            border-radius: 20px; /* Rectangular with slightly rounded corners */
-            object-fit: contain;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-            border: 6px solid #3F4E4F; /* Border color matching the dark grey theme */
-        }
+        
+
+
+        
 
         /* Add a scroll progress indicator */
         .scroll-progress {
@@ -673,6 +697,33 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
             width: 0%;
             transition: width 0.2s ease-out;
         }
+        .animated-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+}
+
+.animated-photo:hover {
+    transform: scale(1.2);
+}
+.option-card {
+            background-color: #bb6fd8;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            width: 500px;
+        }
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background-color: #CBDDEC; /* Celeste */
+        }
+
 
     </style>
 </head>
@@ -699,9 +750,12 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
         <section id="home" class="hero">
             <div class="hero-content">
                 <!-- Removed unnecessary <br> tags -->
+                <br><br><br><br><br>
                 <br><br><br>
                 <br><br><br>
                 <br><br><br>
+                
+                
                 <h1>Perfect Your Profile, Land Your Dream Job.</h1>
                 <p class="lead">Showcase your work online with a portfolio website. Get started with a professionally designed template that can be customized to fit your profile.</p>
                 <button class="btn btn-primary btn-lg mt-3" onclick="showForm()" title="Get Started">Get Started</button>
@@ -713,23 +767,32 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
             </div>
         </section>
         
-        <section id="about" class="container">
-            <div class="row">
-                <!-- Left Column -->
-                <div class="col-md-6 about-column d-flex align-items-center justify-content-center">
+        <section id="about" class="container text-center">
+            <div class="row justify-content-center">
+                <!-- Title -->
+                <div class="col-12">
+                    <h2>We Provide</h2>
+                </div>
+        
+                <!-- Description
+                <div class="col-12">
+                    <p>Choose from a variety of unique layouts to build an online portfolio that best displays your work. Add individual projects to keep your website organized and easy-to-navigate.</p>
+                </div> -->
+        
+                <!-- Image -->
+                <div class="col-12 d-flex align-items-center justify-content-center">
                     <div class="hero-image-container-second">
-                        <img class="hero-image-second" src="Screenshot (112).png" alt="Portfolio Example">
+                        <img class="hero-image-second animated-photo" src="Screenshot (112).png" alt="Portfolio Example">
                     </div>
                 </div>
-                
-                <!-- Right Column - Text -->
-                <div class="col-md-6 about-column">
-                    <h2>Portfolio that stands out.</h2>
-                    <p>Choose from a variety of unique layouts to build an online portfolio that best displays your work. Add individual projects to keep your website organized and easy-to-navigate.</p>
+        
+                <!-- Button -->
+                <!-- <div class="col-12 mt-3">
                     <button class="btn btn-primary btn-lg" onclick="window.location.href='#'">Learn More</button>
-                </div>
+                </div> -->
             </div>
         </section>
+        
     </main>
     
     <script>
