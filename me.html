@@ -1,46 +1,957 @@
-About Me
-Kiran Nistala
-A passionate student with a strong foundation & dedicated to building intuitive and high-performing web applications. I thrive in fast-paced environments & enjoy tackling complex challenges
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiran Nistala | Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2d3e50;
+            --secondary: #1abc9c;
+            --light: #f8f9fa;
+            --dark: #121212;
+            --gray: #6c757d;
+            --section-bg: #f5f7fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-color: var(--light);
+            scroll-behavior: smooth;
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Layout */
+        .sidebar {
+            background-color: var(--primary);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            width: 320px;
+            z-index: 999;
+            overflow-y: auto;
+        }
+        
+        .main-content {
+            margin-left: 320px;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar Content */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-content {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+        
+        .role {
+            color: var(--secondary);
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            text-align: left;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-item i {
+            font-size: 18px;
+            margin-right: 15px;
+            min-width: 20px;
+            color: var(--secondary);
+        }
+        
+        .contact-item span {
+            font-size: 15px;
+            word-break: break-word;
+        }
+        
+        .social-links {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Nav */
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        
+        .nav-item {
+            margin-bottom: 10px;
+        }
+        
+        .nav-link {
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .nav-link i {
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 50px;
+        }
+        
+        section:nth-child(odd) {
+            background-color: var(--section-bg);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        /* About */
+        .about-me p {
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+        
+        /* Skills */
+        .skills-category {
+            margin-bottom: 40px;
+        }
+        
+        .skills-category h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .skill-item {
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-item i {
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 20px;
+        }
+        
+        /* Education */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--secondary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-year {
+            display: inline-block;
+            font-size: 14px;
+            padding: 5px 15px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-size: 20px;
+            color: var(--primary);
+        }
+        
+        .timeline-location {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        /* Work Experience */
+        .experience-item {
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .experience-title {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .experience-company {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .experience-details {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+        
+        .experience-details::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-size: 20px;
+        }
+        
+        /* Projects */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .project-desc {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        .project-details {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .project-details::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        /* Additional Info */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .info-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-card h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--secondary);
+            color: var(--primary);
+        }
+        
+        .info-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-item i {
+            color: var(--secondary);
+            margin-right: 15px;
+            font-size: 16px;
+        }
+        
+        /* Mobile Nav Toggle */
+        .mobile-nav-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            border: none;
+            background: var(--secondary);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                left: -320px;
+                transition: all 0.5s ease;
+            }
+            
+            .sidebar.active {
+                left: 0;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .mobile-nav-toggle {
+                display: flex;
+            }
+            
+            section {
+                padding: 60px 30px;
+            }
+            
+            .timeline::after {
+                left: 40px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 20px;
+            }
+            
+            .timeline-item::after {
+                left: 30px;
+            }
+            
+            .right {
+                left: 0;
+            }
+            
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 50px 20px;
+            }
+            
+            .timeline-content {
+                padding: 15px;
+            }
+            
+            .timeline-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Nav Toggle -->
+    <button class="mobile-nav-toggle" id="mobile-nav-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <img src="profile.jpg" alt="Kiran Nistala" class="profile-img">
+            <h1 class="name">Kiran Nistala</h1>
+            <p class="role">Computer Science Engineer</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>kirannistala02@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>9398340743</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Hyderabad</span>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/kiran-nistala-3855a4282" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="http://github.com/kitzy02" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.geeksforgeeks.org/user/ki02/" target="_blank">
+                    <i class="fas fa-code"></i>
+                </a>
+                <a href="https://www.hackerrank.com/profile/kirannistala02" target="_blank">
+                    <i class="fab fa-hackerrank"></i>
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#about" class="nav-link active">
+                        <i class="fas fa-user"></i> About Me
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">
+                        <i class="fas fa-code"></i> Skills
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#education" class="nav-link">
+                        <i class="fas fa-graduation-cap"></i> Education
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link">
+                        <i class="fas fa-briefcase"></i> Experience
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">
+                        <i class="fas fa-project-diagram"></i> Projects
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#additional" class="nav-link">
+                        <i class="fas fa-info-circle"></i> Additional Info
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- About Section -->
+        <section id="about" class="about-me">
+            <h2 class="section-title">About Me</h2>
+            <p>A passionate student with a strong foundation & dedicated to building intuitive and high-performing web applications. I thrive in fast-paced environments & enjoy tackling complex challenges.</p>
+            <p>Currently pursuing my Bachelor's degree in Computer Science Engineering at JNTUH University College of Engineering Sultanpur, I'm focused on developing my skills in full-stack development and solving complex problems through innovative technology solutions.</p>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="skills-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>C++</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>C</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-java"></i>
+                            <span>Java</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3>Scripting Languages</h3>
+                        <div class="skill-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>Perl</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-gem"></i>
+                            <span>Ruby</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="skills-category">
+                        <h3>Web Technologies</h3>
+                        <div class="skill-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-bootstrap"></i>
+                            <span>Bootstrap</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3>Frameworks and Libraries</h3>
+                        <div class="skill-item">
+                            <i class="fab fa-react"></i>
+                            <span>React.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3>Cloud/Databases</h3>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="skills-category">
+                        <h3>Soft Skills</h3>
+                        <div class="skill-item">
+                            <i class="fas fa-users"></i>
+                            <span>Collaboration</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <span>Problem-solving</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-comments"></i>
+                            <span>Communication</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Time management</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="skills-category">
+                        <h3>Languages Known</h3>
+                        <div class="skill-item">
+                            <i class="fas fa-language"></i>
+                            <span>English</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-language"></i>
+                            <span>Hindi</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-language"></i>
+                            <span>Telugu</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3>Courses Taken</h3>
+                        <div class="skill-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>MERN Stack</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>Data Structures and Algorithms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Pursuing</div>
+                        <h3 class="timeline-title">Bachelor of Technology in Computer Science and Engineering</h3>
+                        <p class="timeline-location">JNTUH University College of Engineering Sultanpur</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2021</div>
+                        <h3 class="timeline-title">Intermediate in PCM</h3>
+                        <p class="timeline-location">Sri Chaitanya Junior Kalasala</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2019</div>
+                        <h3 class="timeline-title">High School in All</h3>
+                        <p class="timeline-location">Narayana CO Spark</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Work Experience</h2>
+            
+            <div class="experience-item">
+                <h3 class="experience-title">TSE</h3>
+                <p class="experience-company">HSBC • TILL DATE</p>
+                
+                <div class="experience-details">
+                    Organised a two day technical workshop on Full Stack Development at JNTUH-UCES
+                </div>
+                <div class="experience-details">
+                    Led Technical Fest YUGA2K24 as the main technical coordinator, organizing events with 200+ participation
+                </div>
+                <div class="experience-details">
+                    Member of JNTU Technical Club
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="projects-container">
+                <div class="project-card">
+                    <!-- <img alt="Your Profile, Perfected" class="project-img"> -->
+                    <div class="project-content">
+                        <h3 class="project-title">Your Profile, Perfected</h3>
+                        <p class="project-desc">A portfolio maker web application that enables users to create professional and visually appealing portfolio websites without any coding knowledge.</p>
+                        <div class="project-details">Provides multiple customizable templates for showcasing work, skills, and experience.</div>
+                        <div class="project-details">Allows users to generate and customize personal portfolio websites dynamically.</div>
+                        <div class="project-details">Implemented state management using Redux (or Context API) for efficient data handling.</div>
+                        <div class="project-details">Deployed the application using Vercel for seamless hosting and accessibility.</div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <!-- <img src="/api/placeholder/400/300" alt="Get it done – From ToDo to Done" class="project-img"> -->
+                    <div class="project-content">
+                        <h3 class="project-title">Get it done – From ToDo to Done</h3>
+                        <p class="project-desc">A Todo list web application using MERN stack that implements basic CRUD operations.</p>
+                        <div class="project-details">Users can read, add, update, and delete their todo list in the table using the web interface.</div>
+                        <div class="project-details">Frontend uses React component called "Todo" to display tasks, status and form to add new to-do items.</div>
+                        <div class="project-details">Backend application fetches data from MongoDB using backend API.</div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <!-- <img src="/api/placeholder/400/300" alt="Weather App" class="project-img"> -->
+                    <div class="project-content">
+                        <h3 class="project-title">Weather App</h3>
+                        <p class="project-desc">A Weather application made using API, designed to provide users with real-time weather updates and forecasts.</p>
+                        <div class="project-details">Provides real-time weather forecasts.</div>
+                        <div class="project-details">Developed core features such as real-time weather updates.</div>
+                        <div class="project-details">Integrated third-party weather APIs to ensure accurate and up-to-date information.</div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <!-- <img src="/api/placeholder/400/300" alt="E-commerce Website" class="project-img"> -->
+                    <div class="project-content">
+                        <h3 class="project-title">E-commerce Website</h3>
+                        <p class="project-desc">A Food website using Web Development, which takes orders and delivers it to the user within given time.</p>
+                        <div class="project-details">Primary objective is to make healthy eating convenient and accessible for everyone.</div>
+                        <div class="project-details">Implemented user accounts and personalized tastes.</div>
+                        <div class="project-details">Developed with a mobile-responsive design.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Additional Info Section -->
+        <section id="additional">
+            <h2 class="section-title">Additional Information</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Hobbies</h3>
+                    <div class="info-item">
+                        <i class="fas fa-film"></i>
+                        <span>Binge watching movies</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Languages</h3>
+                    <div class="info-item">
+                        <i class="fas fa-language"></i>
+                        <span>English</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-language"></i>
+                        <span>Hindi</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-language"></i>
+                        <span>Telugu</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Mobile navigation toggle
+        const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+        const sidebar = document.getElementById('sidebar');
+        
+        mobileNavToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+            // Change icon based on sidebar state
+            const icon = this.querySelector('i');
+            if (sidebar.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close sidebar when clicking on navigation links on mobile
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 992) {
+                    sidebar.classList.remove('active');
+                    const icon = mobileNavToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // Active navigation link handling
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+    
 
-kirannistala02@gmail.com
-9398340743
-Hyderabad
 
- 
-Profile Photo
-Education
-Bachelor of Technology in Computer Science and Engineering
-JNTUH University College of Engineering Sultanpur • Pursuing
-
-Intermediate in PCM
-Sri Chaitanya Junior Kalasala • 2021
-
-High School in All
-Narayana CO Spark • 2019
-
-Work Experience
-TSE
-HSBC • TILL DATE
-
-Projects
-Your Profile ,Perfected
-This project is a portfolio maker, a web application that enables users to create professional and visually appealing portfolio websites without any coding knowledge. • It provides multiple customizable templates, allowing users to showcase their work, skills, and experience effortlessly. • It allows users to generate and customize personal portfolio websites dynamically. • Implemented state management using Redux (or Context API) for efficient data handling. • Deployed the application using Vercel for seamless hosting and accessibility
-
-Get it done – From ToDo to Done
-This project is about a Todo list web application using MERN stack • It basically implements basic CRUD operation using MERN stack • The users can read, add, update, and delete their todo list in the table using the web interface • In frontend, the react component called “Todo” is used to display tasks, status and form to add new to-do item with edit and deletion feature. • In backend, application fetches data from MongoDB using backend API
-
-Weather App
-This project is about a Weather application made using API, designed to provide users with real-time weather updates and forecasts. • It provides a real time weather forecast • Developed core features such as real-time weather updates • Integrated third-party weather APIs to ensure accurate and up-to-date information.
-
-E-commerce Website
-This project is about a Food website using Web Development, which takes order and delivers it to the user with in given time. • The primary objective is to make healthy eating convenient and accessible for everyone, especially for those with a busy lifestyle. • User accounts and personalized tastes • Mobile-responsive design
-
-Additional Information
-Hobbies
-Binge watching movies
-
-Languages
-English hindi telugu
-
-Activities
-NA

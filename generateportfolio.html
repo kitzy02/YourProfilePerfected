@@ -84,7 +84,27 @@
             color: #bb6fd8; /* Midnight */
             font-family: "Clarkson", Helvetica, sans-serif;
             scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #bb6fd8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8a50b3;
+        }
+        
         .navbar {
             background-color: #bb6fd8; /* Midnight */
             color: #3F4E4F; /* Dark Grey */
@@ -119,18 +139,163 @@
             padding: 0 15px;
             margin: 0 auto;
         }
+        .link-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .link-indicator i {
+            margin-right: 8px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .copy-btn {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
         
         .page-container {
-            padding-top: 20px; /* Offset content due to fixed navbar */
+            padding-top: 500px; /* Removed padding since we have a dedicated top section */
+            text-align: center;
+            margin: 0 auto;
         }
+        
+        
         .options-container {
             background-color: #FFFFFF; /* White */
             border-radius: 15px;
             padding: 40px;
-            margin-top: 30px;
+            margin: 30px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            max-width: 1100px;
         }
+        
+        .heading {
+            font-size: 32px;
+            font-weight: bold;
+            color: #3F4E4F; /* Dark Grey */
+            margin-bottom: 15px;
+        }
+        
+        .subtext {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .templates {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        @media (max-width: 992px) {
+            .templates {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .templates {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .template {
+            height: 200px;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+            color: #3F4E4F;
+            text-decoration: none;
+            font-weight: bold;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .template:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .template img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.5s;
+        }
+        
+        .template:hover img {
+            transform: scale(1.1);
+        }
+        
+        .template-overlay-red{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: #720909;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .template-overlay-blue{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: #163853;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .template-overlay-green{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: #2b554e;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .template:hover .template-overlay {
+            padding-bottom: 25px;
+        }
+        
         .option-card {
-            background-color:#bb6fd8;
+            background-color: #bb6fd8;
             border-radius: 10px;
             padding: 30px;
             text-align: center;
@@ -138,27 +303,46 @@
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
             width: 500px;
+            max-width: 100%;
+            margin: 0 auto;
         }
+        
         .option-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            background-color: #CBDDEC; /* Celeste */
+            background-color: #8a50b3;
         }
+        
         .option-card h3 {
             color: #F0F4F8;
             margin-bottom: 15px;
             font-weight: 600;
         }
+        
         .option-card p {
-            color:#495057;
+            color: white;
         }
+        
         .section-title {
-            color:#495057;
+            color: #495057;
             margin-bottom: 20px;
         }
+        
         h1, h2 {
             color: #3F4E4F; /* Dark Grey */
             font-weight: bold;
+        }
+        
+        
+        /* Animation for the link */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .animated-link {
+            animation: pulse 2s infinite;
         }
     </style>
 </head>
@@ -177,59 +361,60 @@
             </div>
         </div>
     </nav>
-    
-    <!-- <div class="page-container container">
-        <h2 class="text-center mb-4">The link for your personalised portfolio is</h2>
-        <div class="options-container">
-            <p id="personalizedLink" class="text-center"></p>
-            </div>
-        </div>
-    </div>
-    <script>
-        window.onload = function() {
-    // Retrieve the username from URL query params
-    const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get('username');
-    
-    if (username) {
-        // Update the personalized link
-        const personalizedLink = document.getElementById("personalizedLink");
-        personalizedLink.innerHTML = `https://your-profile-perfected.vercel.app/${username}`; // Directly show the URL
-    } else {
-        alert("No username found.");
-    }
-};
-
-    </script> -->
-    <!-- <div class="page-container container">
-        <h2 class="text-center mb-4">The link for your personalised portfolio is</h2>
-        <div class="options-container">
-            <p id="personalizedLink" class="text-center"></p>
-        </div>
-    </div>
-    
-    <script>
-        window.onload = function() {
-            // Retrieve the username from localStorage
-            const username = localStorage.getItem("username");
-            
-            console.log("Username retrieved from localStorage:", username); // Debugging log
-            
-            if (username) {
-                // Display the personalized link
-                const personalizedLink = document.getElementById("personalizedLink");
-                personalizedLink.innerHTML = `https://your-profile-perfected.vercel.app/${username}`; // Directly show the URL
-            } else {
-                alert("No username found.");
-                window.location.href = "index.html"; // Redirect back to the username input page
-            }
-        };
-    </script> -->
 
     <div class="page-container container">
         <h2 class="text-center mb-4">The link for your personalised portfolio is</h2>
-        <br><br><br>
-            <p id="personalizedLink" class="text-center" onclick="redirectToPortfolio()"></p>
+        <div class="link-container" id="personalizedLink">
+            <!-- Will be filled by JavaScript -->
+        </div>
+        <div class="link-indicator">
+            <p>The default theme is based on the website's colors.</p>
+        </div>
+    
+        
+        <div class="options-container text-center mt-5 p-4">
+            <div class="line"></div>
+            <h2 class="heading">Want to Personalise?</h2>
+            <p class="subtext">Choose from these stunning templates below</p>
+            <div class="templates">
+                <a href="templates/blue.html" class="template text-decoration-none">
+                    <img src="templates/bluetemplate.png" alt="Modern Portfolio Template">
+                    <div class="template-overlay-blue">
+                        <span>Modern Blue</span>
+                    </div>
+                </a>
+                <a href="templates/red.html" class="template text-decoration-none">
+                    <img src="templates/redtemplate.png" alt="Creative Portfolio Template">
+                    <div class="template-overlay-red">
+                        <span>Classy Red</span>
+                    </div>
+                </a>
+                <a href="templates/green.html" class="template text-decoration-none">
+                    <img src="templates/greentemplate.png" alt="Corporate Portfolio Template">
+                    <div class="template-overlay-green">
+                        <span>Corporate Green</span>
+                    </div>
+                </a>
+                <!-- <a href="four.html" class="template text-decoration-none">
+                    <img src="/api/placeholder/400/320" alt="Minimalist Portfolio Template">
+                    <div class="template-overlay">
+                        <span>Minimalist</span>
+                    </div>
+                </a>
+                <a href="five.html" class="template text-decoration-none">
+                    <img src="/api/placeholder/400/320" alt="Developer Portfolio Template">
+                    <div class="template-overlay">
+                        <span>Developer Focus</span>
+                    </div>
+                </a>
+                <a href="six.html" class="template text-decoration-none">
+                    <img src="/api/placeholder/400/320" alt="Dark Mode Portfolio Template">
+                    <div class="template-overlay">
+                        <span>Dark Mode</span>
+                    </div>
+                </a> -->
+            </div>
+        </div>
     </div>
     
     <script>
@@ -237,53 +422,23 @@
             const username = localStorage.getItem("username");
     
             if (username) {
-                // document.getElementById("personalizedLink").innerHTML = 
-                //     `<a  target="_blank">
-                // click here to view ${username}'s portfolio
-                //     </a>`;
                 document.getElementById("personalizedLink").innerHTML = 
-    `<div class="text-center">
-        <a href="click.html?user=${username}" target="_blank" class="option-card text-white text-decoration-none">
-            https://your-profile-perfected.vercel.app/${username}
-        </a>
-    </div>`;
+                `<div class="option-card animated-link">
+                    <a href="click.html?user=${username}" target="_blank">
+                        https://your-profile-perfected.vercel.app/${username}
+                    </a>
+                    
 
+                </div>`;
             } else {
                 alert("No username found.");
                 window.location.href = "index.html"; 
             }
         };
+        
         function redirectToPortfolio() {
-    window.location.href = "click.html";
-  }
-//         function createPage(username) {
-//     const newPageContent = `
-//         <!DOCTYPE html>
-//         <html lang="en">
-//         <head>
-//             <meta charset="UTF-8">
-//             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//             <title>${username}'s Portfolio</title>
-//             <style>
-//                 body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
-//                 h1 { color: #007bff; }
-//             </style>
-//         </head>
-//         <body>
-//             <h1>Welcome, ${username}!</h1>
-//             <p>This is your personalized portfolio page.</p>
-//             <a href="index.html">Go Back</a>
-//         </body>
-//         </html>
-//     `;
-
-//     const blob = new Blob([newPageContent], { type: "text/html" });
-//     const url = URL.createObjectURL(blob);
-//     window.open(url, "_blank");
-// }
-//     </script>
-    
-    
-    
+            window.location.href = "click.html";
+        }
+    </script>
 </body>
 </html>
