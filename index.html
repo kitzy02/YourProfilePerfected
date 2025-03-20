@@ -217,7 +217,7 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
     </script>    
 </body>
 </html> --> 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -227,14 +227,29 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
+         ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background:#CBDDEC;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #bb6fd8;
+        }
         body {
-            background-color: #A5C8D6; /* Celeste */
-            color: #1B2631; /* Midnight */
+            background-color: #CBDDEC;
+            color: #bb6fd8; /* Midnight */
             font-family: "Clarkson", Helvetica, sans-serif;
             scroll-behavior: smooth;
         }
         .navbar {
-            background-color: #1B2631; /* Midnight */
+            background-color: #bb6fd8; /* Midnight */
             color: #3F4E4F; /* Dark Grey */
             height: 90px; /* Increased navbar height */
             padding: 10px 10px; /* Adjusted padding */
@@ -249,7 +264,7 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
             font-weight: bold;
         }
         .navbar a:hover {
-            color: #A5C8D6 !important; /* Celeste */
+            color: #CBDDEC; /* Celeste */
         }
         .navbar-toggler {
             border: none;
@@ -275,7 +290,7 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
             transition: 0.3s;
         }
         .btn-primary:hover {
-            background-color: #1B2631; /* Midnight */
+            background-color: #bb6fd8; /* Midnight */
             border-color: #1B2631;
         }
         .container {
@@ -318,13 +333,13 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
         .hero-image {
             width: 350px;
             height: 250px;
-            border-radius: 8px; /* Rectangular with slightly rounded corners */
-            object-fit: cover;
+            border-radius: 20px; /* Rectangular with slightly rounded corners */
+            object-fit:fill;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
             border: 6px solid #3F4E4F; /* Border color matching the dark grey theme */
         }
         #explore {
-            background-color: #A5C8D6; /* Match background color */
+            background-color: #CBDDEC; /* Match background color */
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -366,30 +381,14 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
                 margin-top: 0;
             }
         }
-        .semi-circle-btn {
-    width: 160px;  /* Wider for a better shape */
-    height: 80px;   /* Semi-circle height */
-    border-radius: 80px 80px 0 0; /* Creates a top semi-circle */
-    background-color: #1B2631; /* Midnight color */
-    border: none;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    cursor: pointer;
-    transform: rotate(-90deg); /* Rotates left */
-}
-
-.semi-circle-btn:hover {
-    background-color: #131A22; /* Darker midnight shade */
-    transform: rotate(-90deg) scale(1.1); /* Keeps rotation intact */
-}
+        .hero-image-second{
+            width: 100px;
+            height: 50px;
+            border-radius: 20px; /* Rectangular with slightly rounded corners */
+            object-fit:contain;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border: 6px solid #3F4E4F; /* Border color matching the dark grey theme */
+        }
 
 
     </style>
@@ -418,30 +417,361 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
             <button class="btn btn-primary btn-lg mt-3" onclick="showForm()" title="Get Started">Get Started</button>
         </div>
         <div class="hero-image-container">
-            <img class="hero-image" src="https://media.istockphoto.com/id/926105800/vector/laptop-and-hands-on-the-keyboard.jpg?s=612x612&w=0&k=20&c=a56powH11ST0AogisCOrofSa18W0ccUG5HC2n-tlwko=" alt="Portfolio Example">
+            <img class="hero-image" src="Screenshot (111).png" alt="Portfolio Example">
         </div>
     </section>
     
     <section id="about" class="container">
         <div class="row">
             <!-- Left Column - Semi-Circle Button -->
-            <div class="col-md-6 about-column d-flex align-items-center justify-content-center">
-                <button class="semi-circle-btn btn btn-primary btn-lg" onclick="window.location.href='#'">Learn More</button>
-            </div>
-            
+            <!-- <div class="col-md-6 about-column d-flex align-items-center justify-content-center">
+                <!-- <button class="semi-circle-btn btn btn-primary btn-lg" onclick="window.location.href='#'">Learn More</button>
+                 -->
+                 <!-- <div class="hero-image-container">
+            <img class="hero-image-second" src="Screenshot (112).png" alt="Portfolio Example">
+        </div>
+            </div> -->
+             -->
             <!-- Right Column - Text -->
-            <div class="col-md-6 about-column">
+            <!-- <div class="col-md-6 about-column">
                 <h2>Portfolio that stands out.</h2>
                 <p>Choose from a variety of unique layouts to build an online portfolio that best displays your work. Add individual projects to keep your website organized and easy-to-navigate.</p>
+                <button class="btn btn-primary btn-lg" onclick="window.location.href='#'">Learn More</button>
             </div>
         </div>
     </section>
     
     
-    <script>
+    <script> -->
+        <!-- // Script to scroll to top on page reload
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        }
+    
+        // Force scroll to top on page refresh
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+        });
         function showForm() {
             window.location.href = "username.html";
         }
+    </script>
+</body>
+</html> --> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile, Perfected</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Enhanced scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #bb6fd8, #CBDDEC);
+            border-radius: 10px;
+            border: 2px solid #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #a55bc4, #b8d0e4);
+            cursor: pointer;
+        }
+        /* Firefox scrollbar styling */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #bb6fd8 #f1f1f1;
+        }
+        
+        body {
+            background-color: #CBDDEC;
+            color: #bb6fd8; /* Midnight */
+            font-family: "Clarkson", Helvetica, sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            margin: 0; /* Reset default margin */
+            padding: 0; /* Reset default padding */
+        }
+        .navbar {
+            background-color: #bb6fd8; /* Midnight */
+            color: #3F4E4F; /* Dark Grey */
+            height: 90px; /* Increased navbar height */
+            padding: 10px 10px; /* Adjusted padding */
+            width: 100%; /* Full-length navbar */
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            position: fixed; /* Fixed positioning to keep navbar at top */
+        }
+        .navbar a {
+            color: #F0F4F8 !important; /* Light color for better visibility */
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #CBDDEC; /* Celeste */
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+        h1, h2 {
+            color: #3F4E4F; /* Dark Grey */
+            font-weight: bold;
+        }
+        .lead {
+            color: #2C3E50; /* Slightly darker shade for better readability */
+        }
+        .btn-primary {
+            background-color: #3F4E4F; /* Dark Grey */
+            border-color: #3F4E4F;
+            color: #F0F4F8; /* Light Grey */
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #bb6fd8; /* Midnight */
+            border-color: #1B2631;
+        }
+        .container {
+            background-color: #F0F4F8; /* Soft White */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        .navbar .container {
+            background-color: transparent; /* Make navbar container transparent */
+            box-shadow: none;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Fix for the top content visibility issue */
+        main {
+            padding-top: 90px; /* Add top padding equal to navbar height */
+        }
+        
+        .hero {
+            min-height: 100vh; /* Use min-height instead of height */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 10% 40px; /* Increased top padding to ensure content is below navbar */
+            margin-bottom: 30px;
+        }
+        
+        .hero-content {
+            width: 100%;
+            max-width: 600px;
+            text-align: left;
+            padding-top: 20px; /* Add some top padding */
+        }
+        .hero-image-container {
+            display: flex;
+            justify-content: flex-end; /* Align to right */
+            width: 100%;
+            margin-top: 20px;
+            padding-top: 190px;
+            
+        }
+        .hero-image-container-second{
+            display: flex;
+            justify-content: flex-end; /* Align to right */
+            width: 100%;
+            margin-top: 20px;
+            
+        }
+        .hero-image {
+            width: 350px;
+            height: 250px;
+            border-radius: 20px; /* Rectangular with slightly rounded corners */
+            object-fit: fill;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border: 6px solid #3F4E4F; /* Border color matching the dark grey theme */
+        }
+        #explore {
+            background-color: #CBDDEC; /* Match background color */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        #about {
+            margin-top: 50px; /* Add space between sections */
+            margin-bottom: 50px; /* Add bottom margin */
+        }
+        .about-column {
+            padding: 15px;
+        }
+        .about-column img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .about-column h3 {
+            color: #3F4E4F;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .about-column p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        @media (min-width: 768px) {
+            .hero {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+                align-items: center;
+            }
+            .hero-content {
+                flex: 1;
+                margin-right: 40px;
+            }
+            .hero-image-container {
+                flex: 1;
+                margin-top: 0;
+            }
+        }
+        .hero-image-second{
+            width: 100px;
+            height: 50px;
+            border-radius: 20px; /* Rectangular with slightly rounded corners */
+            object-fit: contain;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border: 6px solid #3F4E4F; /* Border color matching the dark grey theme */
+        }
+
+        /* Add a scroll progress indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(to right, #bb6fd8, #3F4E4F);
+            z-index: 10000;
+            width: 0%;
+            transition: width 0.2s ease-out;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress"></div>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Profile, Perfected</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <!-- Removed unnecessary <br> tags -->
+                <br><br><br>
+                <br><br><br>
+                <br><br><br>
+                <h1>Perfect Your Profile, Land Your Dream Job.</h1>
+                <p class="lead">Showcase your work online with a portfolio website. Get started with a professionally designed template that can be customized to fit your profile.</p>
+                <button class="btn btn-primary btn-lg mt-3" onclick="showForm()" title="Get Started">Get Started</button>
+            </div>
+            <div class="hero-image-container">
+
+                
+                <img class="hero-image" src="Screenshot (111).png" alt="Portfolio Example">
+            </div>
+        </section>
+        
+        <section id="about" class="container">
+            <div class="row">
+                <!-- Left Column -->
+                <div class="col-md-6 about-column d-flex align-items-center justify-content-center">
+                    <div class="hero-image-container-second">
+                        <img class="hero-image-second" src="Screenshot (112).png" alt="Portfolio Example">
+                    </div>
+                </div>
+                
+                <!-- Right Column - Text -->
+                <div class="col-md-6 about-column">
+                    <h2>Portfolio that stands out.</h2>
+                    <p>Choose from a variety of unique layouts to build an online portfolio that best displays your work. Add individual projects to keep your website organized and easy-to-navigate.</p>
+                    <button class="btn btn-primary btn-lg" onclick="window.location.href='#'">Learn More</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // Script to ensure the page loads at the top
+        window.onload = function() {
+            // Force scroll to top
+            window.scrollTo(0, 0);
+            
+            // Initialize scroll progress indicator
+            window.addEventListener('scroll', updateScrollProgress);
+            
+            // Check after a small delay if page is not at top and fix if needed
+            setTimeout(function() {
+                if (window.scrollY > 0) {
+                    window.scrollTo(0, 0);
+                }
+            }, 100);
+        }
+        
+        // Update scroll progress indicator
+        function updateScrollProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.scroll-progress').style.width = scrolled + '%';
+        }
+    
+        // Force scroll to top on page refresh
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+        });
+        
+        function showForm() {
+            window.location.href = "username.html";
+        }
+        
+        // Additional safety measure to ensure content is visible
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
     </script>
 </body>
 </html>

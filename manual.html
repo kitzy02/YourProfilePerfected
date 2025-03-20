@@ -239,22 +239,22 @@
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #A5C8D6;
+            background: #CBDDEC;
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #1B2631;
+            background: #bb6fd8;
         }
 
         body {
-            background-color: #A5C8D6; /* Celeste */
-            color: #1B2631; /* Midnight */
+            background-color: #CBDDEC; /* Celeste */
+            color: #bb6fd8; /* Midnight */
             font-family: "Clarkson", Helvetica, sans-serif;
             scroll-behavior: smooth;
             overflow-y: scroll; /* Always show vertical scrollbar */
         }
         .navbar {
-            background-color: #1B2631; /* Midnight */
+            background-color: #bb6fd8; /* Midnight */
             color: #3F4E4F; /* Dark Grey */
             height: 70px; /* Reduced navbar height for laptop view */
             padding: 5px 10px; /* Reduced padding */
@@ -269,7 +269,7 @@
             font-weight: bold;
         }
         .navbar a:hover {
-            color: #A5C8D6 !important; /* Celeste */
+            color: #CBDDEC !important; /* Celeste */
         }
         .navbar-toggler {
             border: none;
@@ -347,7 +347,7 @@
         }
         /* Photo upload styling - adjusted for laptop */
         .photo-upload {
-            border: 2px dashed #A5C8D6;
+            border: 2px dashed #CBDDEC;
             border-radius: 8px;
             padding: 15px;
             text-align: center;
@@ -379,8 +379,8 @@
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
         }
         .btn-primary {
-            background-color: #1B2631;
-            border-color: #1B2631;
+            background-color: #bb6fd8;
+            border-color: #bb6fd8;
             padding: 8px 25px;
             font-weight: 600;
             transition: all 0.3s;
@@ -461,12 +461,12 @@
                                     <input type="text" class="form-control" id="firstName">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="middleName" class="form-label">Middle Name</label>
-                                    <input type="text" class="form-control" id="middleName">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="lastName" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName">
+                                    <label for="leetcode" class="form-label">Leetcode</label>
+                                    <input type="text" class="form-control" id="leetcode">
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">Phone Number</label>
@@ -475,8 +475,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email">
+                                    <label for="lastname" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastname">
                                 </div>
                                 <div class="mb-3">
                                     <label for="location" class="form-label">Location</label>
@@ -633,13 +633,117 @@
                 </div>
             </div>
 
-            <div class="submit-container">
-                <a href="generateportfolio.html" class="btn btn-primary btn-lg">Generate Portfolio</a>
+            <div class="submit-container"> 
+                <button type="button" id="submitButton" class="btn btn-primary btn-lg">Generate Portfolio</button>
             </div>
+            
         </form>
     </div>
-    
     <script>
+        // Script to scroll to top on page reload
+window.onload = function() {
+    window.scrollTo(0, 0);
+}
+
+// Force scroll to top on page refresh
+window.addEventListener('beforeunload', function() {
+    window.scrollTo(0, 0);
+});
+
+// Add row buttons functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const addRowButtons = document.querySelectorAll('.add-row-btn');
+
+    addRowButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const table = this.previousElementSibling.querySelector('table');
+            const tbody = table.querySelector('tbody');
+            const lastRow = tbody.querySelector('tr:last-child');
+            const newRow = lastRow.cloneNode(true);
+
+            // Clear inputs in the new row
+            newRow.querySelectorAll('input').forEach(input => {
+                input.value = '';
+            });
+
+            tbody.appendChild(newRow);
+        });
+    });
+});
+
+document.getElementById("submitButton").addEventListener("click", function () {
+    const formData = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastname").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        location: document.getElementById("location").value,
+        leetcode: document.getElementById("leetcode").value,
+        linkedin: document.getElementById("linkedin").value,
+        github: document.getElementById("github").value,
+        summary: document.getElementById("summary").value,
+        hobbies: document.getElementById("hobbies").value,
+        languages: document.getElementById("languages").value,
+        activities: document.getElementById("activities").value,
+        education: [],
+        workExperience: [],
+        projects: [],
+    };
+
+    // Capture education data
+    const educationRows = document.querySelectorAll(".option-card:nth-of-type(2) tbody tr");
+    educationRows.forEach(row => {
+        // Skip empty rows
+        if (!row.querySelector("td:nth-child(1) input").value) return;
+        
+        const rowData = {
+            school: row.querySelector("td:nth-child(1) input").value,
+            degree: row.querySelector("td:nth-child(2) input").value,
+            fieldOfStudy: row.querySelector("td:nth-child(3) input").value,
+            graduationYear: row.querySelector("td:nth-child(4) input").value
+        };
+        formData.education.push(rowData);
+    });
+
+    // Capture work experience data
+    const workRows = document.querySelectorAll(".option-card:nth-of-type(3) tbody tr");
+    workRows.forEach(row => {
+        // Skip empty rows
+        if (!row.querySelector("td:nth-child(1) input").value) return;
+        
+        const rowData = {
+            jobTitle: row.querySelector("td:nth-child(1) input").value,
+            company: row.querySelector("td:nth-child(2) input").value,
+            duration: row.querySelector("td:nth-child(3) input").value
+        };
+        formData.workExperience.push(rowData);
+    });
+
+    // Capture project data
+    const projectRows = document.querySelectorAll(".option-card:nth-of-type(4) tbody tr");
+    projectRows.forEach(row => {
+        // Skip empty rows
+        if (!row.querySelector("td:nth-child(1) input").value) return;
+        
+        const rowData = {
+            projectName: row.querySelector("td:nth-child(1) input").value,
+            description: row.querySelector("td:nth-child(2) input").value
+        };
+        formData.projects.push(rowData);
+    });
+
+    // Save form data in localStorage
+    localStorage.setItem("portfolioData", JSON.stringify(formData));
+
+    // Redirect to a new page or show confirmation
+    alert("Portfolio Data Saved Successfully!");
+    window.location.href = "generateportfolio.html"; // Redirect to the portfolio page
+});
+    </script>
+</body>
+</html>
+
+    <!-- <script>
         // Script to scroll to top on page reload
         window.onload = function() {
             window.scrollTo(0, 0);
@@ -670,6 +774,154 @@
                 });
             });
         });
+        document.getElementById("submitButton").addEventListener("click", async function () {
+    const formData = {
+        firstName: document.getElementById("firstName").value,
+        middleName: document.getElementById("middleName").value,
+        lastName: document.getElementById("lastName").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        location: document.getElementById("location").value,
+        linkedin: document.getElementById("linkedin").value,
+        github: document.getElementById("github").value,
+        summary: document.getElementById("summary").value,
+        education: Array.from(document.querySelectorAll(".option-card:nth-of-type(2) tbody tr")).map(row => ({
+            school: row.cells[0].querySelector("input").value,
+            degree: row.cells[1].querySelector("input").value,
+            field: row.cells[2].querySelector("input").value,
+            graduationYear: row.cells[3].querySelector("input").value,
+        })),
+        experience: Array.from(document.querySelectorAll(".option-card:nth-of-type(3) tbody tr")).map(row => ({
+            jobTitle: row.cells[0].querySelector("input").value,
+            company: row.cells[1].querySelector("input").value,
+            duration: row.cells[2].querySelector("input").value,
+        })),
+        projects: Array.from(document.querySelectorAll(".option-card:nth-of-type(4) tbody tr")).map(row => ({
+            projectName: row.cells[0].querySelector("input").value,
+            description: row.cells[1].querySelector("input").value,
+        })),
+        hobbies: document.getElementById("hobbies").value,
+        languages: document.getElementById("languages").value,
+        activities: document.getElementById("activities").value,
+    };
+
+    try {
+        const response = await fetch("http://localhost:5000/save-profile", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert(result.message);
+            window.location.href = "generateportfolio.html"; // Redirect after successful save
+        } else {
+            alert("Error: " + result.error);
+        }
+    } catch (error) {
+        console.error("Error saving profile:", error);
+        alert("Failed to save profile");
+    }
+});
+
+    </script> -->
+    <!-- <script>
+        // Script to scroll to top on page reload
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        }
+    
+        // Force scroll to top on page refresh
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+        });
+
+
+
+        
+    
+        // Add row buttons functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const addRowButtons = document.querySelectorAll('.add-row-btn');
+    
+            addRowButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const table = this.previousElementSibling.querySelector('table');
+                    const tbody = table.querySelector('tbody');
+                    const lastRow = tbody.querySelector('tr:last-child');
+                    const newRow = lastRow.cloneNode(true);
+    
+                    // Clear inputs in the new row
+                    newRow.querySelectorAll('input').forEach(input => {
+                        input.value = '';
+                    });
+    
+                    tbody.appendChild(newRow);
+                });
+            });
+        });
+    
+        document.getElementById("submitButton").addEventListener("click", function () {
+            const formData = {
+                firstName: document.getElementById("firstName").value,
+                middleName: document.getElementById("email").value,
+                lastName: document.getElementById("leetcode").value,
+                phone: document.getElementById("phone").value,
+                email: document.getElementById("lastname").value,
+                location: document.getElementById("location").value,
+                linkedin: document.getElementById("linkedin").value,
+                github: document.getElementById("github").value,
+                summary: document.getElementById("summary").value,
+                hobbies: document.getElementById("hobbies").value,
+                languages: document.getElementById("languages").value,
+                activities: document.getElementById("activities").value,
+                education: [],
+                workExperience: [],
+                projects: [],
+            };
+    
+            // Capture education data
+            const educationRows = document.querySelectorAll(".education-table tbody tr");
+            educationRows.forEach(row => {
+                const rowData = {
+                    school: row.querySelector("td:nth-child(1) input").value,
+                    degree: row.querySelector("td:nth-child(2) input").value,
+                    fieldOfStudy: row.querySelector("td:nth-child(3) input").value,
+                    graduationYear: row.querySelector("td:nth-child(4) input").value
+                };
+                formData.education.push(rowData);
+            });
+    
+            // Capture work experience data
+            const workRows = document.querySelectorAll(".work-table tbody tr");
+            workRows.forEach(row => {
+                const rowData = {
+                    jobTitle: row.querySelector("td:nth-child(1) input").value,
+                    company: row.querySelector("td:nth-child(2) input").value,
+                    duration: row.querySelector("td:nth-child(3) input").value
+                };
+                formData.workExperience.push(rowData);
+            });
+    
+            // Capture project data
+            const projectRows = document.querySelectorAll(".project-table tbody tr");
+            projectRows.forEach(row => {
+                const rowData = {
+                    projectName: row.querySelector("td:nth-child(1) input").value,
+                    description: row.querySelector("td:nth-child(2) input").value
+                };
+                formData.projects.push(rowData);
+            });
+    
+            // Save form data in localStorage
+            localStorage.setItem("portfolioData", JSON.stringify(formData));
+    
+            // Redirect to a new page or show confirmation
+            alert("Portfolio Data Saved Successfully!");
+            window.location.href = "generateportfolio.html"; // Redirect to the portfolio page or another page
+        });
     </script>
+    
 </body>
-</html>
+</html> -->
