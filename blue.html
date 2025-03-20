@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${username}'s Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #163853;
+            --secondary-color: #3F4E4F;
+            --background-color: #F8F9FA;
+            --section-bg: #FFFFFF;
+            --text-color: #333333;
+            --accent-color: #3A6F9C;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 0;
+        }
+        
+        .navbar a {
+            color: #FFFFFF !important;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar a:hover {
+            color: #f0f0f0 !important;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            padding-top: 100px;
+            max-width: 1000px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--section-bg);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: var(--accent-color);
+            margin-top: 25px;
+            font-weight: 600;
+        }
+        
+        .profile-details {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .profile-info {
+            flex: 3;
+        }
+        
+        .profile-photo-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+        }
+        
+        .contact-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            width: 25px;
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .social-links a {
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .education-item, .work-item, .project-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--primary-color);
+            background-color: #f9f9f9;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .education-item h4, .work-item h4, .project-item h4 {
+            margin: 0;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .education-item p, .work-item p, .project-item p {
+            margin: 5px 0 0 0;
+            color: #666;
+        }
+        
+        .additional-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-top: 3px solid var(--accent-color);
+        }
+        
+        .info-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-details {
+                flex-direction: column;
+            }
+            
+            .profile-photo-container {
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-user-tie me-2"></i>My Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#personalDetails"><i class="fas fa-id-card me-1"></i> About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education"><i class="fas fa-graduation-cap me-1"></i> Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#workExperience"><i class="fas fa-briefcase me-1"></i> Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects"><i class="fas fa-project-diagram me-1"></i> Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#additionalInfo"><i class="fas fa-info-circle me-1"></i> Additional Info</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="personalDetails" class="section">
+            <h2><i class="fas fa-user me-2"></i>About Me</h2>
+            <div class="profile-details">
+                <div class="profile-info">
+                    <h3 id="fullName"></h3>
+                    <p id="summary" class="lead"></p>
+                    
+                    <div class="mt-4">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span id="email"></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span id="phone"></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="location"></span>
+                        </div>
+                        <div class="social-links mt-3">
+                            <a id="linkedinLink" href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a id="githubLink" href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-photo-container">
+                    <img id="profilePhoto" src="" alt="Profile Photo" class="profile-image">
+                </div>
+            </div>
+        </div>
+
+        <div id="education" class="section">
+            <h2><i class="fas fa-graduation-cap me-2"></i>Education</h2>
+            <div id="educationList" class="education-container"></div>
+        </div>
+
+        <div id="workExperience" class="section">
+            <h2><i class="fas fa-briefcase me-2"></i>Work Experience</h2>
+            <div id="workList" class="work-container"></div>
+        </div>
+
+        <div id="projects" class="section">
+            <h2><i class="fas fa-project-diagram me-2"></i>Projects</h2>
+            <div id="projectList" class="projects-container"></div>
+        </div>
+
+        <div id="additionalInfo" class="section">
+            <h2><i class="fas fa-info-circle me-2"></i>Additional Information</h2>
+            <div class="additional-info-grid">
+                <div class="info-card">
+                    <h4><i class="fas fa-heart me-2"></i>Hobbies</h4>
+                    <p id="hobbies"></p>
+                </div>
+                <div class="info-card">
+                    <h4><i class="fas fa-language me-2"></i>Languages</h4>
+                    <p id="languages"></p>
+                </div>
+                <div class="info-card">
+                    <h4><i class="fas fa-running me-2"></i>Activities</h4>
+                    <p id="activities"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const data = JSON.parse(localStorage.getItem("portfolioData")) || {};
+            if (!data.firstName) {
+                alert("No portfolio data found.");
+                window.location.href = "index.html";
+                return;
+            }
+            
+            // Handle the photo display
+            if (data.photo) {
+                const photoElement = document.getElementById("profilePhoto"); 
+                if (photoElement) {
+                    photoElement.src = data.photo;
+                }
+            }
+            
+            // Fill in personal details
+            document.getElementById("fullName").textContent = (data.firstName || "") + " " + (data.lastName || "");
+            document.getElementById("email").textContent = data.email || "N/A";
+            document.getElementById("phone").textContent = data.phone || "N/A";
+            document.getElementById("location").textContent = data.location || "N/A";
+            document.getElementById("summary").textContent = data.summary || "N/A";
+            document.getElementById("hobbies").textContent = data.hobbies || "N/A";
+            document.getElementById("languages").textContent = data.languages || "N/A";
+            document.getElementById("activities").textContent = data.activities || "N/A";
+            
+            // Social links
+            const linkedinLink = document.getElementById("linkedinLink");
+            linkedinLink.href = data.linkedin || "#";
+            linkedinLink.style.display = data.linkedin ? "inline" : "none";
+            
+            const githubLink = document.getElementById("githubLink");
+            githubLink.href = data.github || "#";
+            githubLink.style.display = data.github ? "inline" : "none";
+            
+            // Education
+            const educationList = document.getElementById("educationList");
+            (data.education || []).forEach(edu => {
+                const div = document.createElement("div");
+                div.className = "education-item";
+                
+                const h4 = document.createElement("h4");
+                h4.textContent = `${edu.degree || ''} in ${edu.fieldOfStudy || ''}`;
+                
+                const p = document.createElement("p");
+                p.textContent = `${edu.school || ''} • ${edu.graduationYear || ''}`;
+                
+                div.appendChild(h4);
+                div.appendChild(p);
+                educationList.appendChild(div);
+            });
+
+            // Work Experience
+            const workList = document.getElementById("workList");
+            (data.workExperience || []).forEach(work => {
+                const div = document.createElement("div");
+                div.className = "work-item";
+                
+                const h4 = document.createElement("h4");
+                h4.textContent = work.jobTitle || '';
+                
+                const p = document.createElement("p");
+                p.textContent = `${work.company || ''} • ${work.duration || ''}`;
+                
+                div.appendChild(h4);
+                div.appendChild(p);
+                workList.appendChild(div);
+            });
+
+            // Projects
+            const projectList = document.getElementById("projectList");
+            (data.projects || []).forEach(proj => {
+                const div = document.createElement("div");
+                div.className = "project-item";
+                
+                const h4 = document.createElement("h4");
+                h4.textContent = proj.projectName || '';
+                
+                const p = document.createElement("p");
+                p.textContent = proj.description || '';
+                
+                div.appendChild(h4);
+                div.appendChild(p);
+                projectList.appendChild(div);
+            });
+            
+            // Back to top button functionality
+            const backToTopButton = document.getElementById("backToTop");
+            
+            window.addEventListener("scroll", () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add("visible");
+                } else {
+                    backToTopButton.classList.remove("visible");
+                }
+            });
+            
+            backToTopButton.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
