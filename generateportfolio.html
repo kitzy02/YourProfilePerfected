@@ -290,6 +290,38 @@
             transition: 0.3s;
         }
         
+        .template-overlay-beige{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: #897c73;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+       
+        .template-overlay-bw{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background:  #000000;;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .template-overlay-dark{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background:   #121212;;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        
         .template:hover .template-overlay {
             padding-bottom: 25px;
         }
@@ -395,24 +427,24 @@
                         <span>Corporate Green</span>
                     </div>
                 </a>
-                <!-- <a href="four.html" class="template text-decoration-none">
-                    <img src="/api/placeholder/400/320" alt="Minimalist Portfolio Template">
-                    <div class="template-overlay">
+                <a href="beige.html" class="template text-decoration-none">
+                    <img src="beige.png" alt="Minimalist Portfolio Template">
+                    <div class="template-overlay-beige">
                         <span>Minimalist</span>
                     </div>
                 </a>
-                <a href="five.html" class="template text-decoration-none">
-                    <img src="/api/placeholder/400/320" alt="Developer Portfolio Template">
-                    <div class="template-overlay">
+                <a href="grey.html" class="template text-decoration-none">
+                    <img src="bwtemplate.png" alt="Developer Portfolio Template">
+                    <div class="template-overlay-bw">
                         <span>Developer Focus</span>
                     </div>
                 </a>
-                <a href="six.html" class="template text-decoration-none">
-                    <img src="/api/placeholder/400/320" alt="Dark Mode Portfolio Template">
-                    <div class="template-overlay">
+                <a href="dark.html" class="template text-decoration-none">
+                    <img src="darktemplate.png" alt="Dark Mode Portfolio Template">
+                    <div class="template-overlay-dark">
                         <span>Dark Mode</span>
                     </div>
-                </a> -->
+                </a>
             </div>
         </div>
     </div>
@@ -424,9 +456,10 @@
             if (username) {
                 document.getElementById("personalizedLink").innerHTML = 
                 `<div class="option-card animated-link">
-                    <a href="click.html?user=${username}" target="_blank">
-                        https://your-profile-perfected.vercel.app/${username}
-                    </a>
+                    <a href="click.html?user=${username}" target="_blank" 
+   style="color: white; font-size: 20px; font-family: 'Clarkson', sans-serif; text-decoration: none;">
+    https://your-profile-perfected.vercel.app/${username}
+</a>
                     
 
                 </div>`;

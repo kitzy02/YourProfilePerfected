@@ -1,0 +1,502 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${username}'s Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #000000;
+            --background-color: #edf0f2;
+            --text-color: #000000;
+            --border-color: #cccccc;
+            --accent-color: #555555;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Space Mono', monospace;
+            line-height: 1.6;
+            letter-spacing: -0.03em;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-brand {
+            color: var(--background-color) !important;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+        
+        .navbar .nav-link {
+            color: var(--background-color) !important;
+            margin: 0 10px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        .navbar .nav-link:hover {
+            color: var(--border-color) !important;
+        }
+        
+        .container {
+            max-width: 1140px;
+            padding-top: 90px;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+        
+        h2 {
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        h3 {
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+        
+        .profile-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .profile-photo-container {
+            text-align: right;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+        }
+        
+        .contact-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            width: 25px;
+            margin-right: 15px;
+        }
+        
+        .social-links {
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            color: var(--primary-color);
+            margin-right: 20px;
+            font-size: 1.2rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            opacity: 0.7;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        
+        .timeline-subtitle {
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-date {
+            font-size: 14px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-item {
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            background-color: var(--background-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .additional-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .info-card {
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            background-color: var(--background-color);
+        }
+        
+        .info-card h4 {
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-card h4 i {
+            margin-right: 10px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-photo-container {
+                text-align: center;
+                order: -1;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .project-grid, .additional-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-code me-2"></i>PORTFOLIO
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#personalDetails">ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">EDUCATION</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#workExperience">EXPERIENCE</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">PROJECTS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#additionalInfo">MORE</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="personalDetails" class="section">
+            <h2>ABOUT ME</h2>
+            <div class="profile-details">
+                <div class="profile-info">
+                    <h3 id="fullName"></h3>
+                    <p id="summary" class="mt-4"></p>
+                    
+                    <div class="mt-4">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span id="email"></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span id="phone"></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="location"></span>
+                        </div>
+                        <div class="social-links">
+                            <a id="linkedinLink" href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a id="githubLink" href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-photo-container">
+                    <img id="profilePhoto" src="" alt="Profile Photo" class="profile-image">
+                </div>
+            </div>
+        </div>
+
+        <div id="education" class="section">
+            <h2>EDUCATION</h2>
+            <div id="educationList"></div>
+        </div>
+
+        <div id="workExperience" class="section">
+            <h2>WORK EXPERIENCE</h2>
+            <div id="workList"></div>
+        </div>
+
+        <div id="projects" class="section">
+            <h2>PROJECTS</h2>
+            <div id="projectList" class="project-grid"></div>
+        </div>
+
+        <div id="additionalInfo" class="section">
+            <h2>ADDITIONAL INFORMATION</h2>
+            <div class="additional-info-grid">
+                <div class="info-card">
+                    <h4><i class="fas fa-heart"></i> HOBBIES</h4>
+                    <p id="hobbies"></p>
+                </div>
+                <div class="info-card">
+                    <h4><i class="fas fa-language"></i> LANGUAGES</h4>
+                    <p id="languages"></p>
+                </div>
+                <div class="info-card">
+                    <h4><i class="fas fa-running"></i> ACTIVITIES</h4>
+                    <p id="activities"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const data = JSON.parse(localStorage.getItem("portfolioData")) || {};
+            if (!data.firstName) {
+                alert("No portfolio data found.");
+                window.location.href = "index.html";
+                return;
+            }
+            
+            // Handle the photo display
+            if (data.photo) {
+                const photoElement = document.getElementById("profilePhoto"); 
+                if (photoElement) {
+                    photoElement.src = data.photo;
+                }
+            }
+            
+            // Fill in personal details
+            document.getElementById("fullName").textContent = (data.firstName || "") + " " + (data.lastName || "");
+            document.getElementById("email").textContent = data.email || "N/A";
+            document.getElementById("phone").textContent = data.phone || "N/A";
+            document.getElementById("location").textContent = data.location || "N/A";
+            document.getElementById("summary").textContent = data.summary || "N/A";
+            document.getElementById("hobbies").textContent = data.hobbies || "N/A";
+            document.getElementById("languages").textContent = data.languages || "N/A";
+            document.getElementById("activities").textContent = data.activities || "N/A";
+            
+            // Social links
+            const linkedinLink = document.getElementById("linkedinLink");
+            linkedinLink.href = data.linkedin || "#";
+            linkedinLink.style.display = data.linkedin ? "inline" : "none";
+            
+            const githubLink = document.getElementById("githubLink");
+            githubLink.href = data.github || "#";
+            githubLink.style.display = data.github ? "inline" : "none";
+            
+            // Education
+            const educationList = document.getElementById("educationList");
+            (data.education || []).forEach(edu => {
+                const div = document.createElement("div");
+                div.className = "timeline-item";
+                
+                const h4 = document.createElement("h4");
+                h4.className = "timeline-title";
+                h4.textContent = `${edu.degree || ''} in ${edu.fieldOfStudy || ''}`;
+                
+                const school = document.createElement("div");
+                school.className = "timeline-subtitle";
+                school.textContent = edu.school || '';
+                
+                const year = document.createElement("div");
+                year.className = "timeline-date";
+                year.textContent = edu.graduationYear || '';
+                
+                div.appendChild(h4);
+                div.appendChild(school);
+                div.appendChild(year);
+                educationList.appendChild(div);
+            });
+
+            // Work Experience
+            const workList = document.getElementById("workList");
+            (data.workExperience || []).forEach(work => {
+                const div = document.createElement("div");
+                div.className = "timeline-item";
+                
+                const h4 = document.createElement("h4");
+                h4.className = "timeline-title";
+                h4.textContent = work.jobTitle || '';
+                
+                const company = document.createElement("div");
+                company.className = "timeline-subtitle";
+                company.textContent = work.company || '';
+                
+                const duration = document.createElement("div");
+                duration.className = "timeline-date";
+                duration.textContent = work.duration || '';
+                
+                div.appendChild(h4);
+                div.appendChild(company);
+                div.appendChild(duration);
+                workList.appendChild(div);
+            });
+
+            // Projects
+            const projectList = document.getElementById("projectList");
+            (data.projects || []).forEach(proj => {
+                const div = document.createElement("div");
+                div.className = "project-item";
+                
+                const h4 = document.createElement("h4");
+                h4.className = "project-title";
+                h4.textContent = proj.projectName || '';
+                
+                const p = document.createElement("p");
+                p.textContent = proj.description || '';
+                
+                div.appendChild(h4);
+                div.appendChild(p);
+                projectList.appendChild(div);
+            });
+            
+            // Back to top button functionality
+            const backToTopButton = document.getElementById("backToTop");
+            
+            window.addEventListener("scroll", () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add("visible");
+                } else {
+                    backToTopButton.classList.remove("visible");
+                }
+            });
+            
+            backToTopButton.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
