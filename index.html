@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +6,7 @@
     <title>Your Profile, Perfected</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -40,8 +40,13 @@
             scrollbar-width: thin; /* Firefox support */
             scrollbar-color: #bb6fd8 #CBDDEC;
         }
+        
+        /* Added padding-top to the page */
+        .page-container {
+            padding-top: 1200px;
+        }
 
-/* Prevent horizontal scrolling */   
+        /* Prevent horizontal scrolling */   
         body {
             background-color: #CBDDEC;
             color: #bb6fd8; /* Midnight */
@@ -50,6 +55,7 @@
             overflow-x: hidden; /* Prevent horizontal scrolling */
             margin: 0; /* Reset default margin */
             padding: 0; /* Reset default padding */
+            padding-top: 1200px; /* Added overall padding-top as requested */
         }
         .navbar {
             background-color: #bb6fd8; /* Midnight */
@@ -96,6 +102,19 @@
             background-color: #bb6fd8; /* Midnight */
             border-color: #1B2631;
         }
+        .btn-new {
+            background-color: #bb6fd8; /* Dark Grey */
+            border-color: #3F4E4F;
+            color: #F0F4F8; /* Light Grey */
+            transition: 0.3s;
+            width: 300px;
+            height: 40px;
+            font-size: larger;
+        }
+        .btn-new:hover {
+            background-color: #CBDDEC; /* Midnight */
+            border-color: #1B2631;
+        }
         .container {
             background-color: #F0F4F8; /* Soft White */
             padding: 30px;
@@ -103,6 +122,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             transition: 0.3s;
         }
+        
         .navbar .container {
             background-color: transparent; /* Make navbar container transparent */
             box-shadow: none;
@@ -118,20 +138,20 @@
             padding-top: 90px; /* Add top padding equal to navbar height */
         }
         
+        /* Reduced hero height to minimize gap */
         .hero {
-            min-height: 100vh; /* Use min-height instead of height */
+            min-height: 60vh; /* Reduced from 90vh to reduce gap */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 120px 10% 40px; /* Increased top padding to ensure content is below navbar */
-            margin-bottom: 30px;
+            padding: 30px 10% 10px; /* Reduced padding */
+            margin-bottom: 0; /* Removed bottom margin to reduce gap */
         }
         
         .hero-content {
             width: 800px;
-           
             text-align: left;
             padding-top: 20px; /* Add some top padding */
         }
@@ -139,10 +159,9 @@
             display: flex;
             justify-content: flex-end; /* Align to right */
             width: 100%;
-            margin-top: 20px;
-            padding-top: 330px;
+            margin-top: 10px; /* Reduced margin */
+            padding-top: 30px; /* Reduced padding */
             padding-left: 50px;
-            
         }
         .hero-image-container-second {
             display: flex;
@@ -179,10 +198,6 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        #about {
-            margin-top: 50px; /* Add space between sections */
-            margin-bottom: 50px; /* Add bottom margin */
-        }
         .about-column {
             padding: 15px;
         }
@@ -201,12 +216,16 @@
             margin-bottom: 20px;
             line-height: 1.6;
         }
+        
+        /* Fixed the gap between sections by adjusting media query */
         @media (min-width: 768px) {
             .hero {
                 flex-direction: row;
                 justify-content: space-between;
                 text-align: left;
                 align-items: center;
+                min-height: 50vh; /* Further reduced for desktop */
+                padding-bottom: 0; /* Remove bottom padding on desktop */
             }
             .hero-content {
                 flex: 1;
@@ -216,7 +235,13 @@
                 flex: 1;
                 margin-top: 0;
             }
+            
+            /* Adjust about section position */
+            #about {
+                margin-top: 0; /* Removed margin to close gap */
+            }
         }
+        
         /* Add a scroll progress indicator */
         .scroll-progress {
             position: fixed;
@@ -254,7 +279,208 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             background-color: #CBDDEC; /* Celeste */
         }
-
+        
+        /* Adjusted how-it-works section to reduce gap */
+        #how-it-works {
+            background-color: #CBDDEC;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 20px; /* Reduced from 30px */
+            margin-bottom: 50px;
+        }
+        
+        /* Added specific margin for the about section to fix gap */
+        #about {
+            margin-top: 30px; /* Removes gap after hero section */
+        }
+        
+        .how-it-works-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #bb6fd8;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #bb6fd8;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .step-card h3 {
+            color: #3F4E4F;
+            margin-bottom: 15px;
+        }
+        
+        .step-card p {
+            color: #2C3E50;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+        
+        /* Enhanced Footer Styles */
+        footer {
+            background: linear-gradient(135deg, #bb6fd8 0%, #9e4ec1 100%);
+            color: white;
+            padding: 40px 0 20px; /* Reduced padding */
+            position: relative;
+            margin-top: 20px; /* Added margin-top */
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to right bottom, transparent 49%, #bb6fd8 50%);
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px; /* Reduced from 30px */
+            padding: 0 15px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 15px; /* Reduced from 20px */
+            padding-bottom: 8px; /* Reduced from 10px */
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: white;
+        }
+        
+        .footer-column a,
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block flex;
+            margin-bottom: 8px; /* Reduced from 10px */
+            transition: color 0.3s;
+            align-items: center;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-column i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px; /* Reduced from 20px */
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        
+        .social-icon:hover i {
+            color: #bb6fd8;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px; /* Reduced from 30px */
+            margin-top: 20px; /* Reduced from 30px */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px; /* Reduced from 15px */
+            color: white;
+        }
+        
+        .footer-desc {
+            max-width: 300px;
+            margin-bottom: 15px; /* Reduced from 20px */
+            line-height: 1.5; /* Slightly reduced */
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                margin-bottom: 25px; /* Reduced from 30px */
+            }
+        }
     </style>
 </head>
 <body>
@@ -271,6 +497,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#how-it-works">How It Works</a></li>
                 </ul>
             </div>
         </div>
@@ -279,18 +506,11 @@
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <br><br><br><br><br>
-                <br><br><br>
-                <br><br><br>
-                <br><br><br>
-                
                 <h1>Perfect Your Profile, Land Your Dream Job.</h1>
                 <p class="lead">Showcase your work online with a portfolio website. Get started with a professionally designed template that can be customized to fit your profile.</p>
                 <button class="btn btn-primary btn-lg mt-3" onclick="showForm()" title="Get Started">Get Started</button>
             </div>
             <div class="hero-image-container">
-
-                
                 <img class="hero-image" src="hero-image.png" alt="Portfolio Example">
             </div>
         </section>
@@ -308,33 +528,121 @@
                         <img class="hero-image-second animated-photo" src="hero-image-second.png" alt="Portfolio Example">
                     </div>
                 </div>
-        
-                <!-- Button -->
-                <!-- <div class="col-12 mt-3">
-                    <button class="btn btn-primary btn-lg" onclick="window.location.href='#'">Learn More</button>
-                </div> -->
             </div>
         </section>
         
+        <section id="how-it-works" class="py-5">
+            <div class="how-it-works-container">
+                <div class="text-center mb-5">
+                    <h2>Portfolio Blueprint</h2>
+                    <p class="lead text-muted">Four simple steps to create your perfect professional profile</p>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h3>Sign Up & Create Your Account</h3>
+                            <p>Begin by creating your account with a unique username. This will be the foundation of your personalized portfolio website.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h3>Customize Your Profile</h3>
+                            <p>Add your professional information, skills, experience, and education. Upload your best work samples to showcase your talents and capabilities.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h3>Choose Your Style</h3>
+                            <p>Select from our professionally designed templates and color schemes to create a portfolio that reflects your personal brand and professional identity.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <h3>Publish & Share</h3>
+                            <p>Launch your portfolio with a single click and start sharing your professional profile with potential employers, clients, and your network.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <button class="btn btn-new" onclick="showForm()">Create Your Portfolio Now</button>
+                </div>
+            </div>
+        </section>
     </main>
     
-    <script>
-        // Script to ensure the page loads at the top
-        window.onload = function() {
-            // Force scroll to top
-            window.scrollTo(0, 0);
+    <!-- Enhanced Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">YPP</div>
+                <p class="footer-desc">Helping professionals showcase their skills and experience with beautifully designed portfolio websites.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/kiran-nistala" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/kirannistala" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
             
-            // Initialize scroll progress indicator
-            window.addEventListener('scroll', updateScrollProgress);
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="#home"><i class="fas fa-home"></i> Home</a>
+                <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+                <a href="#how-it-works"><i class="fas fa-question-circle"></i> How It Works</a>
+                <a href="#"><i class="fas fa-user-plus"></i> Sign Up</a>
+                <a href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </div>
             
-            // Check after a small delay if page is not at top and fix if needed
-            setTimeout(function() {
-                if (window.scrollY > 0) {
-                    window.scrollTo(0, 0);
-                }
-            }, 100);
-        }
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> 
+                    <a href="mailto:kirannistala02@gmail.com">kirannistala02@gmail.com</a>
+                </p>
+                <p><i class="fas fa-envelope"></i> 
+                    <a href="mailto:yourprofileperfected@gmail.com">yourprofileperfected@gmail.com</a>
+                </p>
+                <p><i class="fas fa-phone"></i> 
+                    <a href="tel:+919398340743">+91 9398340743</a>
+                </p>
+                <p><i class="fas fa-phone"></i> 
+                    <a href="tel:+918309835403">+91 8309835403</a>
+                </p>
+                <p><i class="fas fa-map-marker-alt"></i> Hyderabad, India</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <a href="#"><i class="fas fa-file-alt"></i> Resume Templates</a>
+                <a href="#"><i class="fas fa-book"></i> Career Blog</a>
+                <a href="#"><i class="fas fa-question"></i> FAQ</a>
+                <a href="#"><i class="fas fa-headset"></i> Support</a>
+                <a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+            </div>
+        </div>
         
+        <div class="footer-bottom">
+            <p>&copy; 2025 Your Profile, Perfected. All rights reserved.</p>
+        </div>
+    </footer>
+   
+    <script>
         // Update scroll progress indicator
         function updateScrollProgress() {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -357,6 +665,9 @@
             setTimeout(function() {
                 window.scrollTo(0, 0);
             }, 100);
+            
+            // Add event listener for scroll progress
+            window.addEventListener('scroll', updateScrollProgress);
         });
     </script>
 </body>
