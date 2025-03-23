@@ -1,74 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    Preloader -->
-    <!-- <section class="preloader">
-        <div class="spinner">
-            <span class="spinner-rotate"></span>    
-        </div>
-    </section>
-
-    <nav class="navbar">
-        <a href="#" class="navbar-brand" id="userName">Portfolio</a>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    About Section
-    <section id="about">
-        <h2>About Me</h2>
-        <p id="userEducation">Loading...</p>
-    </section>
-
-     Projects Section -->
-    <!-- <section id="projects">
-        <h2>Projects</h2>
-        <p id="userProjects">Loading...</p>
-    </section>
-
-    Contact Section -->
-    <!-- <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <span id="userEmail"></span></p>
-        <p>Phone: <span id="userPhone"></span></p>
-        <p>LinkedIn: <a id="userLinkedIn" href="#" target="_blank">Profile</a></p>
-        <p>GitHub: <a id="userGitHub" href="#" target="_blank">Profile</a></p>
-    </section> -->
-
-    <!-- Footer -->
-    <!-- <footer>
-        <p>© <span id="currentYear"></span> <span id="footerName"></span>. All Rights Reserved.</p>
-    </footer>
-
-    <script>
-        // Get user data from localStorage (stored when the user submits the form)
-        const userData = JSON.parse(localStorage.getItem("portfolioData"));
-
-        if (userData) {
-            document.getElementById("userName").textContent = userData.name + "'s Portfolio";
-            document.getElementById("userEducation").textContent = userData.education;
-            document.getElementById("userProjects").textContent = userData.projects;
-            document.getElementById("userEmail").textContent = userData.email;
-            document.getElementById("userPhone").textContent = userData.phone;
-            document.getElementById("userLinkedIn").href = userData.linkedin;
-            document.getElementById("userGitHub").href = userData.github;
-            document.getElementById("footerName").textContent = userData.name;
-        }
-
-        // Set current year dynamically
-        document.getElementById("currentYear").textContent = new Date().getFullYear();
-    </script>
-</body>
-</html> --> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,11 +27,11 @@
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #bb6fd8;
+            background: #CBDDEC;
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #8a50b3;
+            background: #bb6fd8 ;
         }
         
         .navbar {
@@ -174,7 +103,7 @@
         }
         
         .page-container {
-            padding-top: 650px; /* Removed padding since we have a dedicated top section */
+            padding-top: 1400px; /* Removed padding since we have a dedicated top section */
             text-align: center;
             margin: 0 auto;
         }
@@ -305,7 +234,7 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            background:  #000000;;
+            background:  #000000;
             color: white;
             padding: 15px;
             text-align: center;
@@ -315,7 +244,98 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            background:   #121212;;
+            background:#121212;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .template-overlay-bluegreen{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background:  #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .template-overlay-lemongreen{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background:  #D1E189;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .template-overlay-orange{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background:   #946c0a;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .template-overlay-neon{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #00ffff,#ff00ff);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .template-overlay-softerneon{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(90deg,#d400d4,#00cccc);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .template-overlay-girl{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(90deg,#9370DB , #FF9AA2,  #FFB7B2,#E2F0CB );
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .template-overlay-uiux{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background:#b48195;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .template-overlay-typo{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background:    #ffbe0b;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .template-overlay-fullstack{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background:#1d4ed8;
             color: white;
             padding: 15px;
             text-align: center;
@@ -427,10 +447,16 @@
                         <span>Corporate Green</span>
                     </div>
                 </a>
+                <a href="lemongreen.html" class="template text-decoration-none">
+                    <img src="lemongreen.png" alt="Developer Portfolio Template">
+                    <div class="template-overlay-lemongreen">
+                        <span>Quirky Lemon</span>
+                    </div>
+                </a>
                 <a href="beige.html" class="template text-decoration-none">
                     <img src="beige.png" alt="Minimalist Portfolio Template">
                     <div class="template-overlay-beige">
-                        <span>Minimalist</span>
+                        <span>Minimalist Beige</span>
                     </div>
                 </a>
                 <a href="grey.html" class="template text-decoration-none">
@@ -439,10 +465,58 @@
                         <span>Developer Focus</span>
                     </div>
                 </a>
+                <a href="bluegreen.html" class="template text-decoration-none">
+                    <img src="bluegreen.png" alt="Minimalist Portfolio Template">
+                    <div class="template-overlay-bluegreen">
+                        <span>Revamped Blue</span>
+                    </div>
+                </a>
                 <a href="dark.html" class="template text-decoration-none">
                     <img src="darktemplate.png" alt="Dark Mode Portfolio Template">
                     <div class="template-overlay-dark">
                         <span>Dark Mode</span>
+                    </div>
+                </a>
+                <a href="orange.html" class="template text-decoration-none">
+                    <img src="orange.png" alt="Dark Mode Portfolio Template">
+                    <div class="template-overlay-orange">
+                        <span>Cool Orange</span>
+                    </div>
+                </a>
+                <a href="neon.html" class="template text-decoration-none">
+                    <img src="neon.png" alt="Minimalist Portfolio Template">
+                    <div class="template-overlay-neon">
+                        <span>Neon Vibes</span>
+                    </div>
+                </a>
+                <a href="lighterneon.html" class="template text-decoration-none">
+                    <img src="softerneon.png" alt="Dark Mode Portfolio Template">
+                    <div class="template-overlay-softerneon">
+                        <span>Softer Neon</span>
+                    </div>
+                </a>
+                <a href="girlboss.html" class="template text-decoration-none">
+                    <img src="girlboss.png" alt="Dark Mode Portfolio Template">
+                    <div class="template-overlay-girl">
+                        <span>Girl Boss</span>
+                    </div>
+                </a>
+                <a href="uiux.html" class="template text-decoration-none">
+                    <img src="uiux.png" alt="Dark Mode Portfolio Template">
+                    <div class="template-overlay-uiux">
+                        <span>UI UX</span>
+                    </div>
+                </a>
+                <a href="typographic.html" class="template text-decoration-none">
+                    <img src="playful.png" alt="Dark Mode Portfolio Template">
+                    <div class="template-overlay-typo">
+                        <span>Typographic Creative</span>
+                    </div>
+                </a>
+                <a href="fullstack.html" class="template text-decoration-none">
+                    <img src="fullstack.png" alt="Dark Mode Portfolio Template">
+                    <div class="template-overlay-fullstack">
+                        <span>Full Stack</span>
                     </div>
                 </a>
             </div>
@@ -470,7 +544,8 @@
         };
         
         function redirectToPortfolio() {
-            window.location.href = "click.html";
+           window.location.href = "click.html";
+
         }
     </script>
 </body>

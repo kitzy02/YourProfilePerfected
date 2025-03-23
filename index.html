@@ -1,463 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Profile, Perfected</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1 style="text-align: center;">Your Profile, Perfected</h1>
-        <p style="text-align: center; font-size: 1.2em;">Perfect Your Profile, Land Your Dream Job.</p>
-    </header>
-    <main>
-        <div style="text-align: center; margin-top: 20px;">
-            <button onclick="showInputOptions()">Get Started</button>
-        </div>
-        
-        <div id="inputOptions" style="display:none; text-align: center; margin-top: 20px;">
-            <h2>Choose Input Method</h2>
-            <button onclick="showResumeUpload()">Upload Resume</button>
-            <button onclick="showManualForm()">Enter Details </button>
-        </div>
 
-        <div id="resumeSection" style="display:none;">
-            <h2>Upload Your Resume</h2>
-            <form id="resumeForm" enctype="multipart/form-data">
-                <label for="resume">Upload Resume (PDF/DOCX):</label>
-                <input type="file" id="resume" accept=".pdf,.docx" required>
-                <button type="submit">Generate Portfolio</button>
-            </form>
-        </div>
-
-        <div id="manualFormSection" style="display:none;">
-            <h2>Enter Your Details</h2>
-            <form>
-                <h5>Personal Details</h5>
-                <label>Full Name</label>
-                <input type="text" class="form-control mb-2">
-                <label>Phone</label>
-                <input type="text" class="form-control mb-2">
-                <label>Email</label>
-                <input type="email" class="form-control mb-2">
-                <label>Location</label>
-                <input type="text" class="form-control mb-2">
-                <label>LinkedIn</label>
-                <input type="text" class="form-control mb-2">
-                <label>GitHub</label>
-                <input type="text" class="form-control mb-2">
-                
-                <h5>Summary</h5>
-                <textarea class="form-control mb-2" placeholder="Brief professional overview"></textarea>
-                
-                <h5>Education</h5>
-                <table>
-                    <tr>
-                        <th>Degree Name</th>
-                        <th>University</th>
-                        <th>Year</th>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                </table>
-                
-                <h5>Technical Skills</h5>
-                <label>Frontend Technologies</label>
-                <input type="text" class="form-control mb-2">
-                <label>Backend Technologies</label>
-                <input type="text" class="form-control mb-2">
-                <label>Databases</label>
-                <input type="text" class="form-control mb-2">
-                <label>Tools & Platforms</label>
-                <input type="text" class="form-control mb-2">
-                
-                <h5>Work Experience</h5>
-                <table>
-                    <tr>
-                        <th>Job Title</th>
-                        <th>Company</th>
-                        <th>Duration</th>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                </table>
-                
-                <h5>Projects</h5>
-                <table>
-                    <tr>
-                        <th>Project Name</th>
-                        <th>Technologies Used</th>
-                        <th>Description & Impact</th>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                </table>
-                
-                <h5>Certifications</h5>
-                <table>
-                    <tr>
-                        <th>Certification Name</th>
-                        <th>Issuing Organization</th>
-                        <th>Year</th>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                </table>
-                
-                <button type="submit" class="btn btn-primary mt-3">Submit</button>
-            </form>
-            <!-- <form id="manualForm">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-                
-                <label for="phone">Phone:</label>
-                <input type="text" id="phone" required>
-                
-                <label for="linkedin">LinkedIn Profile:</label>
-                <input type="url" id="linkedin">
-                
-                <label for="github">GitHub Profile:</label>
-                <input type="url" id="github">
-                
-                <label for="education">Education Details:</label>
-                <textarea id="education" required></textarea>
-                
-                <label for="projects">Projects:</label>
-                <textarea id="projects" required></textarea>
-                
-                <button type="submit">Generate Portfolio</button>
-            </form> -->
-        <!-- </div>
-
-        <div id="portfolioPreview"></div>
-    </main>
-    <script>
-        function showInputOptions() {
-    document.getElementById('inputOptions').style.display = 'block';
-}
-
-function showResumeUpload() {
-    document.getElementById('resumeSection').style.display = 'block';
-    document.getElementById('manualFormSection').style.display = 'none';
-    document.getElementById('inputOptions').style.display = 'none'; // Hide options
-}
-
-function showManualForm() {
-    document.getElementById('manualFormSection').style.display = 'block';
-    document.getElementById('resumeSection').style.display = 'none';
-    document.getElementById('inputOptions').style.display = 'none'; // Hide options
-}
-
-// Handle Resume Form Submission
-document.getElementById("resumeForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
-    window.location.href = "generateportfolio.html"; // Redirect to generated portfolio page
-});
-
-// Handle Manual Form Submission
-document.getElementById("manualForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // Capture form data for local storage
-    const formData = {
-        name: document.querySelector('input[placeholder="Full Name"]').value,
-        phone: document.querySelector('input[placeholder="Phone"]').value,
-        email: document.querySelector('input[placeholder="Email"]').value,
-        location: document.querySelector('input[placeholder="Location"]').value,
-        linkedin: document.querySelector('input[placeholder="LinkedIn"]').value,
-        github: document.querySelector('input[placeholder="GitHub"]').value,
-        summary: document.querySelector('textarea[placeholder="Brief professional overview"]').value
-    };
-
-    localStorage.setItem('portfolioData', JSON.stringify(formData));
-    window.location.href = "generateportfolio.html"; // Redirect to generated portfolio page
-}); -->
-
-        <!-- // function showInputOptions() {
-        //     document.getElementById('inputOptions').style.display = 'block';
-        // }
-    
-        // function showResumeUpload() {
-        //     document.getElementById('resumeSection').style.display = 'block';
-        //     document.getElementById('manualFormSection').style.display = 'none';
-        // }
-    
-        // function showManualForm() {
-        //     document.getElementById('manualFormSection').style.display = 'block';
-        //     document.getElementById('resumeSection').style.display = 'none';
-        // }
-    
-        // // Handle Resume Form Submission
-        // document.getElementById("resumeForm").addEventListener("submit", function(event) {
-        //     event.preventDefault(); // Prevent default form submission
-        //     window.location.href = "generateportfolio.html"; // Redirect to generated portfolio page
-        // });
-    
-        // // Handle Manual Form Submission
-        // document.getElementById("manualForm").addEventListener("submit", function(event) {
-        //     event.preventDefault(); // Prevent default form submission
-        //     window.location.href = "generateportfolio.html"; // Redirect to generated portfolio page
-        // });
-    </script>    
-</body>
-</html> --> 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Profile, Perfected</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-         ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background:#CBDDEC;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #bb6fd8;
-        }
-        body {
-            background-color: #CBDDEC;
-            color: #bb6fd8; /* Midnight */
-            font-family: "Clarkson", Helvetica, sans-serif;
-            scroll-behavior: smooth;
-        }
-        .navbar {
-            background-color: #bb6fd8; /* Midnight */
-            color: #3F4E4F; /* Dark Grey */
-            height: 90px; /* Increased navbar height */
-            padding: 10px 10px; /* Adjusted padding */
-            width: 100%; /* Full-length navbar */
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            position: fixed; /* Fixed positioning to keep navbar at top */
-        }
-        .navbar a {
-            color: #F0F4F8 !important; /* Light color for better visibility */
-            font-weight: bold;
-        }
-        .navbar a:hover {
-            color: #CBDDEC; /* Celeste */
-        }
-        .navbar-toggler {
-            border: none;
-        }
-        .navbar-toggler:focus {
-            outline: none;
-            box-shadow: none;
-        }
-        .navbar-collapse {
-            justify-content: flex-end;
-        }
-        h1, h2 {
-            color: #3F4E4F; /* Dark Grey */
-            font-weight: bold;
-        }
-        .lead {
-            color: #2C3E50; /* Slightly darker shade for better readability */
-        }
-        .btn-primary {
-            background-color: #3F4E4F; /* Dark Grey */
-            border-color: #3F4E4F;
-            color: #F0F4F8; /* Light Grey */
-            transition: 0.3s;
-        }
-        .btn-primary:hover {
-            background-color: #bb6fd8; /* Midnight */
-            border-color: #1B2631;
-        }
-        .container {
-            background-color: #F0F4F8; /* Soft White */
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
-        }
-        .navbar .container {
-            background-color: transparent; /* Make navbar container transparent */
-            box-shadow: none;
-            padding: 0 15px;
-            margin: 0 auto;
-        }
-        .container:hover {
-            transform: scale(1.02);
-        }
-        .hero {
-            height: 100vh; /* Full viewport height */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 10%;
-            padding-top: 90px; /* Account for fixed navbar */
-        }
-        .hero-content {
-            width: 100%;
-            max-width: 600px;
-            text-align: left;
-        }
-        .hero-image-container {
-            display: flex;
-            justify-content: flex-end; /* Align to right */
-            width: 100%;
-            margin-top: 20px;
-        }
-        .hero-image {
-            width: 350px;
-            height: 250px;
-            border-radius: 20px; /* Rectangular with slightly rounded corners */
-            object-fit:fill;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-            border: 6px solid #3F4E4F; /* Border color matching the dark grey theme */
-        }
-        #explore {
-            background-color: #CBDDEC; /* Match background color */
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        #about {
-            margin-top: 50px; /* Add space between sections */
-        }
-        .about-column {
-            padding: 15px;
-        }
-        .about-column img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        .about-column h3 {
-            color: #3F4E4F;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        .about-column p {
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        @media (min-width: 768px) {
-            .hero {
-                flex-direction: row;
-                justify-content: space-between;
-                text-align: left;
-                align-items: center;
-            }
-            .hero-content {
-                flex: 1;
-                margin-right: 40px;
-            }
-            .hero-image-container {
-                flex: 1;
-                margin-top: 0;
-            }
-        }
-        .hero-image-second{
-            width: 100px;
-            height: 50px;
-            border-radius: 20px; /* Rectangular with slightly rounded corners */
-            object-fit:contain;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-            border: 6px solid #3F4E4F; /* Border color matching the dark grey theme */
-        }
-
-
-    </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Your Profile, Perfected</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <br><br>
-            <h1>Perfect Your Profile, Land Your Dream Job.</h1>
-            <p class="lead">Showcase your work online with a portfolio website. Get started with a professionally designed template that can be customized to fit your profile.</p>
-            <button class="btn btn-primary btn-lg mt-3" onclick="showForm()" title="Get Started">Get Started</button>
-        </div>
-        <div class="hero-image-container">
-            <img class="hero-image" src="Screenshot (111).png" alt="Portfolio Example">
-        </div>
-    </section>
-    
-    <section id="about" class="container">
-        <div class="row">
-            <!-- Left Column - Semi-Circle Button -->
-            <!-- <div class="col-md-6 about-column d-flex align-items-center justify-content-center">
-                <!-- <button class="semi-circle-btn btn btn-primary btn-lg" onclick="window.location.href='#'">Learn More</button>
-                 -->
-                 <!-- <div class="hero-image-container">
-            <img class="hero-image-second" src="Screenshot (112).png" alt="Portfolio Example">
-        </div>
-            </div> -->
-             -->
-            <!-- Right Column - Text -->
-            <!-- <div class="col-md-6 about-column">
-                <h2>Portfolio that stands out.</h2>
-                <p>Choose from a variety of unique layouts to build an online portfolio that best displays your work. Add individual projects to keep your website organized and easy-to-navigate.</p>
-                <button class="btn btn-primary btn-lg" onclick="window.location.href='#'">Learn More</button>
-            </div>
-        </div>
-    </section>
-    
-    
-    <script> -->
-        <!-- // Script to scroll to top on page reload
-        window.onload = function() {
-            window.scrollTo(0, 0);
-        }
-    
-        // Force scroll to top on page refresh
-        window.addEventListener('beforeunload', function() {
-            window.scrollTo(0, 0);
-        });
-        function showForm() {
-            window.location.href = "username.html";
-        }
-    </script>
-</body>
-</html> --> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -470,42 +11,37 @@ document.getElementById("manualForm").addEventListener("submit", function(event)
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         /* Scrollbar Width */
-::-webkit-scrollbar {
-    width: 10px;  /* Standard scrollbar width */
-    height: 10px; /* Horizontal scrollbar (if needed) */
-}
+        ::-webkit-scrollbar {
+            width: 10px;  /* Standard scrollbar width */
+            height: 10px; /* Horizontal scrollbar (if needed) */
+        }
 
-/* Scrollbar Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
+        /* Scrollbar Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
 
-/* Scrollbar Thumb (Draggable Part) */
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #bb6fd8, #3F4E4F);
-    border-radius: 10px;
-    border: 2px solid #f1f1f1;
-}
+        /* Scrollbar Thumb (Draggable Part) */
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #bb6fd8, #CBDDEC);
+            border-radius: 10px;
+            border: 2px solid #CBDDEC;
+        }
 
-/* Scrollbar Thumb Hover Effect */
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, #a55bc4, #b8d0e4);
-}
+        /* Scrollbar Thumb Hover Effect */
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #a55bc4, #b8d0e4);
+        }
 
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
-    scrollbar-width: thin; /* Firefox support */
-    scrollbar-color: #bb6fd8 #f1f1f1;
-}
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin; /* Firefox support */
+            scrollbar-color: #bb6fd8 #CBDDEC;
+        }
 
-/* Prevent horizontal scrolling */
-body {
-    overflow-x: hidden;
-}
-
-        
+/* Prevent horizontal scrolling */   
         body {
             background-color: #CBDDEC;
             color: #bb6fd8; /* Midnight */
@@ -609,24 +145,24 @@ body {
             
         }
         .hero-image-container-second {
-    display: flex;
-    justify-content: center;  /* Center horizontally */
-    align-items: center;      /* Center vertically */
-    width: 100%;
-    margin-top: 20px;
-}
+            display: flex;
+            justify-content: center;  /* Center horizontally */
+            align-items: center;      /* Center vertically */
+            width: 100%;
+            margin-top: 20px;
+        }
 
-.hero-image-second {
-    width: 650px !important;  /* Large width */
-    height: 350px !important; /* Large height */
-    max-width: none !important; /* Prevent Bootstrap from shrinking it */
-    max-height: none !important; /* Ensure full height */
-    border-radius: 10px !important; /* Remove any rounding */
-    object-fit:fill; /* Ensure it fills the rectangle properly */
-    display: block; /* Prevent inline styling conflicts */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    border: 6px solid #3F4E4F; /* Dark grey border */
-}
+        .hero-image-second {
+            width: 650px !important;  /* Large width */
+            height: 350px !important; /* Large height */
+            max-width: none !important; /* Prevent Bootstrap from shrinking it */
+            max-height: none !important; /* Ensure full height */
+            border-radius: 10px !important; /* Remove any rounding */
+            object-fit:fill; /* Ensure it fills the rectangle properly */
+            display: block; /* Prevent inline styling conflicts */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border: 6px solid #3F4E4F; /* Dark grey border */
+        }
 
 
         .hero-image {
@@ -681,11 +217,6 @@ body {
                 margin-top: 0;
             }
         }
-        
-
-
-        
-
         /* Add a scroll progress indicator */
         .scroll-progress {
             position: fixed;
@@ -698,17 +229,17 @@ body {
             transition: width 0.2s ease-out;
         }
         .animated-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: transform 0.4s ease-in-out;
-}
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+        }
 
-.animated-photo:hover {
-    transform: scale(1.2);
-}
-.option-card {
+        .animated-photo:hover {
+            transform: scale(1.2);
+        }
+        .option-card {
             background-color: #bb6fd8;
             border-radius: 10px;
             padding: 30px;
@@ -723,7 +254,6 @@ body {
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             background-color: #CBDDEC; /* Celeste */
         }
-
 
     </style>
 </head>
@@ -749,12 +279,10 @@ body {
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <!-- Removed unnecessary <br> tags -->
                 <br><br><br><br><br>
                 <br><br><br>
                 <br><br><br>
                 <br><br><br>
-                
                 
                 <h1>Perfect Your Profile, Land Your Dream Job.</h1>
                 <p class="lead">Showcase your work online with a portfolio website. Get started with a professionally designed template that can be customized to fit your profile.</p>
@@ -763,7 +291,7 @@ body {
             <div class="hero-image-container">
 
                 
-                <img class="hero-image" src="Screenshot (111).png" alt="Portfolio Example">
+                <img class="hero-image" src="hero-image.png" alt="Portfolio Example">
             </div>
         </section>
         
@@ -774,15 +302,10 @@ body {
                     <h2>We Provide</h2>
                 </div>
         
-                <!-- Description
-                <div class="col-12">
-                    <p>Choose from a variety of unique layouts to build an online portfolio that best displays your work. Add individual projects to keep your website organized and easy-to-navigate.</p>
-                </div> -->
-        
                 <!-- Image -->
                 <div class="col-12 d-flex align-items-center justify-content-center">
                     <div class="hero-image-container-second">
-                        <img class="hero-image-second animated-photo" src="Screenshot (112).png" alt="Portfolio Example">
+                        <img class="hero-image-second animated-photo" src="hero-image-second.png" alt="Portfolio Example">
                     </div>
                 </div>
         

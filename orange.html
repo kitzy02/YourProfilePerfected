@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --lemon-green: #dfa35e;
+            --leaf-green: #946c0a;
+            --ivory: #FFFFF0;
+            --light-green: #E8F3D6;
+            --dark-green: #c8700c ;
+            --accent-green: #ddc073;
+        }
+        
+        body {
+            background-color: var(--ivory);
+            color: #333;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+        }
+        
+        /* Sidebar styles */
+        .sidebar {
+            width: 300px;
+            background-color: var(--leaf-green);
+            color: var(--ivory);
+            height: 100vh;
+            position: fixed;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            border-radius: 0 20px 20px 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-top {
+            padding: 2rem;
+            background-color: var(--dark-green);
+            border-radius: 0 20px 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sidebar-top::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background-color: var(--lemon-green);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+        
+        .sidebar-top::after {
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 80px;
+            height: 80px;
+            background-color: var(--lemon-green);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-image-wrapper {
+            width: 160px;
+            height: 160px;
+            border-radius: 20px;
+            padding: 5px;
+            background-color: var(--lemon-green);
+            transform: rotate(5deg);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        .profile-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            color: var(--lemon-green);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container {
+            padding: 2rem;
+            flex: 1;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav-item {
+            margin-bottom: 0.8rem;
+        }
+        
+        .nav-link {
+            color: var(--ivory);
+            display: block;
+            padding: 0.75rem 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-radius: 10px;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .nav-link::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--lemon-green);
+            opacity: 0.2;
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-link:hover::before, .nav-link.active::before {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            background-color: var(--dark-green);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+            color: var(--lemon-green);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem;
+            background-color: var(--dark-green);
+            border-radius: 50px 0 0 0;
+            position: relative;
+        }
+        
+        .social-dot {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: var(--lemon-green);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        
+        .dot-1 { top: 20px; right: 80px; }
+        .dot-2 { bottom: 30px; right: 30px; }
+        .dot-3 { top: 50px; left: 40px; }
+        
+        .social-links a {
+            color: var(--ivory);
+            font-size: 1.2rem;
+            margin: 0 0.8rem;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background-color: var(--lemon-green);
+            color: var(--dark-green);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Main content styles */
+        .main-content {
+            margin-left: 300px;
+            flex: 1;
+            padding: 2.5rem;
+            position: relative;
+        }
+        
+        .background-shape {
+            position: fixed;
+            z-index: -1;
+        }
+        
+        .shape-1 {
+            top: 5%;
+            right: 5%;
+            width: 200px;
+            height: 200px;
+            background-color: var(--lemon-green);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            opacity: 0.2;
+        }
+        
+        .shape-2 {
+            bottom: 10%;
+            right: 20%;
+            width: 150px;
+            height: 150px;
+            background-color: var(--leaf-green);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            opacity: 0.1;
+        }
+        
+        .shape-3 {
+            top: 40%;
+            left: 35%;
+            width: 100px;
+            height: 100px;
+            background-color: var(--accent-green);
+            border-radius: 50% 50% 50% 50% / 60% 40% 60% 40%;
+            opacity: 0.1;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--lemon-green), var(--leaf-green));
+            border-radius: 5px;
+        }
+        
+        .section-accent {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: var(--lemon-green);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+        
+        .accent-1 { top: -20px; right: -20px; }
+        .accent-2 { bottom: -30px; left: 40px; }
+        
+        h2 {
+            color: var(--leaf-green);
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--lemon-green);
+            border-radius: 3px;
+        }
+        
+        h2 i {
+            color: var(--lemon-green);
+            margin-right: 0.5rem;
+        }
+        
+        .education-item, .work-item, .project-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px dashed #e0e0e0;
+            position: relative;
+        }
+        
+        .education-item:last-child, .work-item:last-child, .project-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        
+        .education-item::before, .work-item::before, .project-item::before {
+            content: "";
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 10px;
+            height: 10px;
+            background-color: var(--lemon-green);
+            border-radius: 50%;
+        }
+        
+        h4 {
+            color: var(--leaf-green);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .lead {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.2rem;
+            background-color: var(--light-green);
+            border-radius: 50px;
+            font-weight: 500;
+        }
+        
+        .contact-item i {
+            margin-right: 0.5rem;
+            color: var(--leaf-green);
+        }
+        
+        .additional-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .info-card {
+            background-color: var(--light-green);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-card::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--lemon-green);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        
+        .info-card h4 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--dark-green);
+        }
+        
+        .info-card h4 i {
+            color: var(--leaf-green);
+            margin-right: 0.5rem;
+            background-color: var(--lemon-green);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--leaf-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--lemon-green);
+            color: var(--leaf-green);
+            transform: translateY(-3px);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @media (max-width: 992px) {
+            body {
+                display: block;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1rem 0;
+                border-radius: 0 0 20px 20px;
+            }
+            
+            .sidebar-top {
+                border-radius: 0 0 50px 50px;
+            }
+            
+            .profile-container {
+                flex-direction: row;
+                align-items: center;
+                padding: 1rem;
+            }
+            
+            .profile-image-wrapper {
+                width: 100px;
+                height: 100px;
+                margin-right: 1.5rem;
+                margin-bottom: 0;
+            }
+            
+            .nav-container {
+                padding: 1rem;
+            }
+            
+            .nav-menu {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            
+            .nav-item {
+                margin-bottom: 0;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 1rem;
+            }
+            
+            .social-links {
+                border-radius: 0;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1.5rem;
+            }
+            
+            .section::before {
+                height: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background shapes -->
+    <div class="background-shape shape-1"></div>
+    <div class="background-shape shape-2"></div>
+    <div class="background-shape shape-3"></div>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-top">
+            <div class="profile-container">
+                <div class="profile-image-wrapper">
+                    <img id="profilePhoto" src="" alt="Profile Photo" class="profile-image">
+                </div>
+                <div class="profile-name" id="fullName"></div>
+            </div>
+        </div>
+        
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#personalDetails">
+                        <i class="fas fa-id-card"></i> About Me
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#education">
+                        <i class="fas fa-graduation-cap"></i> Education
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#workExperience">
+                        <i class="fas fa-briefcase"></i> Experience
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">
+                        <i class="fas fa-project-diagram"></i> Projects
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#additionalInfo">
+                        <i class="fas fa-info-circle"></i> Additional Info
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="social-links">
+            <div class="social-dot dot-1"></div>
+            <div class="social-dot dot-2"></div>
+            <div class="social-dot dot-3"></div>
+            <a id="linkedinLink" href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a id="githubLink" href="#" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div id="personalDetails" class="section">
+            <div class="section-accent accent-1"></div>
+            <div class="section-accent accent-2"></div>
+            <h2><i class="fas fa-user"></i> About Me</h2>
+            <p id="summary" class="lead"></p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span id="email"></span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span id="phone"></span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="location"></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="education" class="section">
+            <div class="section-accent accent-1"></div>
+            <div class="section-accent accent-2"></div>
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div id="educationList" class="education-container"></div>
+        </div>
+
+        <div id="workExperience" class="section">
+            <div class="section-accent accent-1"></div>
+            <div class="section-accent accent-2"></div>
+            <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+            <div id="workList" class="work-container"></div>
+        </div>
+
+        <div id="projects" class="section">
+            <div class="section-accent accent-1"></div>
+            <div class="section-accent accent-2"></div>
+            <h2><i class="fas fa-project-diagram"></i> Projects</h2>
+            <div id="projectList" class="projects-container"></div>
+        </div>
+
+        <div id="additionalInfo" class="section">
+            <div class="section-accent accent-1"></div>
+            <div class="section-accent accent-2"></div>
+            <h2><i class="fas fa-info-circle"></i> Additional Information</h2>
+            <div class="additional-info-grid">
+                <div class="info-card">
+                    <h4><i class="fas fa-heart"></i> Hobbies</h4>
+                    <p id="hobbies"></p>
+                </div>
+                <div class="info-card">
+                    <h4><i class="fas fa-language"></i> Languages</h4>
+                    <p id="languages"></p>
+                </div>
+                <div class="info-card">
+                    <h4><i class="fas fa-running"></i> Activities</h4>
+                    <p id="activities"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const data = JSON.parse(localStorage.getItem("portfolioData")) || {};
+            if (!data.firstName) {
+                alert("No portfolio data found.");
+                window.location.href = "index.html";
+                return;
+            }
+            
+            // Handle the photo display
+            if (data.photo) {
+                const photoElement = document.getElementById("profilePhoto"); 
+                if (photoElement) {
+                    photoElement.src = data.photo;
+                }
+            }
+            
+            // Fill in personal details
+            document.getElementById("fullName").textContent = (data.firstName || "") + " " + (data.lastName || "");
+            document.getElementById("email").textContent = data.email || "N/A";
+            document.getElementById("phone").textContent = data.phone || "N/A";
+            document.getElementById("location").textContent = data.location || "N/A";
+            document.getElementById("summary").textContent = data.summary || "N/A";
+            document.getElementById("hobbies").textContent = data.hobbies || "N/A";
+            document.getElementById("languages").textContent = data.languages || "N/A";
+            document.getElementById("activities").textContent = data.activities || "N/A";
+            
+            // Social links
+            const linkedinLink = document.getElementById("linkedinLink");
+            linkedinLink.href = data.linkedin || "#";
+            linkedinLink.style.display = data.linkedin ? "inline-flex" : "none";
+            
+            const githubLink = document.getElementById("githubLink");
+            githubLink.href = data.github || "#";
+            githubLink.style.display = data.github ? "inline-flex" : "none";
+            
+            // Education
+            const educationList = document.getElementById("educationList");
+            (data.education || []).forEach(edu => {
+                const div = document.createElement("div");
+                div.className = "education-item";
+                
+                const h4 = document.createElement("h4");
+                h4.textContent = `${edu.degree || ''} in ${edu.fieldOfStudy || ''}`;
+                
+                const p = document.createElement("p");
+                p.textContent = `${edu.school || ''} • ${edu.graduationYear || ''}`;
+                
+                div.appendChild(h4);
+                div.appendChild(p);
+                educationList.appendChild(div);
+            });
+
+            // Work Experience
+            const workList = document.getElementById("workList");
+            (data.workExperience || []).forEach(work => {
+                const div = document.createElement("div");
+                div.className = "work-item";
+                
+                const h4 = document.createElement("h4");
+                h4.textContent = work.jobTitle || '';
+                
+                const p = document.createElement("p");
+                p.textContent = `${work.company || ''} • ${work.duration || ''}`;
+                
+                div.appendChild(h4);
+                div.appendChild(p);
+                workList.appendChild(div);
+            });
+
+            // Projects
+            const projectList = document.getElementById("projectList");
+            (data.projects || []).forEach(proj => {
+                const div = document.createElement("div");
+                div.className = "project-item";
+                
+                const h4 = document.createElement("h4");
+                h4.textContent = proj.projectName || '';
+                
+                const p = document.createElement("p");
+                p.textContent = proj.description || '';
+                
+                div.appendChild(h4);
+                div.appendChild(p);
+                projectList.appendChild(div);
+            });
+            
+            // Back to top button functionality
+            const backToTopButton = document.getElementById("backToTop");
+            
+            window.addEventListener("scroll", () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add("visible");
+                } else {
+                    backToTopButton.classList.remove("visible");
+                }
+            });
+            
+            backToTopButton.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    // Add active class to the clicked link and remove from others
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+            
+            // Highlight active menu based on scroll position
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('.section');
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    const href = link.getAttribute('href').substring(1);
+                    if (href === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

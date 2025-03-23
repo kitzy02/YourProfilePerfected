@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girl Boss Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        :root {
+            --primary: #9370DB; /* Purple */
+            --secondary:#FF9AA2 ; /* Soft coral */
+            --accent: #FFB7B2; /* Light peach */
+            --light: #E2F0CB; /* Light mint */
+            --dark: #442C5C; /* Deep purple */
+            --border-radius: 12px;
+        }
+        
+       
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FAFAFA;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        /* Decorative dots pattern in background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 200px;
+            background-image: radial-gradient(var(--accent) 2px, transparent 2px);
+            background-size: 20px 20px;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        body::after {
+            content: "";
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 250px;
+            height: 200px;
+            background-image: radial-gradient(var(--light) 2px, transparent 2px);
+            background-size: 22px 22px;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-brand {
+            color: white !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .navbar-brand::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 0;
+            height: 100%;
+            width: 10px;
+            background: var(--accent);
+            border-radius: 20px;
+        }
+        
+        .nav-link {
+            color: white !important;
+            margin: 0 10px;
+            position: relative;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+        
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            color: white;
+        }
+        
+        .section {
+            padding: 40px 0;
+            margin-bottom: 30px;
+            position: relative;
+            border-radius: var(--border-radius);
+            background-color: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+            overflow:hidden;
+        }
+        
+        /* Fancy border for sections */
+        .section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--light));
+           
+        }
+        
+        .section h2 {
+            color: var(--dark);
+            margin-bottom: 30px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-left: 20px;
+        }
+        
+        .section h2 i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .profile-details {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .profile-info {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .profile-photo-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            padding-right: 10px;
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px var(--primary), 
+                        0 0 0 8px var(--accent),
+                        0 8px 16px rgba(0,0,0,0.2);
+            background-color: var(--light);
+        }
+        
+        .contact-item {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .contact-item i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--primary);
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: scale(1.1);
+            background-color: var(--dark);
+        }
+        
+        .education-container, .work-container, .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .education-item, .work-item, .project-item {
+            border: 2px solid var(--light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .education-item::before, .work-item::before, .project-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+        
+        .education-item:hover, .work-item:hover, .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+        
+        .education-item h4, .work-item h4, .project-item h4 {
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .additional-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .info-card {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border: 2px dashed var(--accent);
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .info-card::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 10px;
+            right: 10px;
+            bottom: 10px;
+            left: 10px;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(45deg, var(--primary) 25%, transparent 25%), 
+                linear-gradient(-45deg, var(--primary) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, var(--primary) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--primary) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            transition: opacity 0.3s;
+        }
+        
+        .info-card:hover::before {
+            opacity: 0.2;
+        }
+        
+        .info-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .info-card h4 i {
+            margin-right: 8px;
+        }
+        
+        .info-card p {
+            color: #555;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .profile-details {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .contact-item {
+                display: inline-block;
+                margin: 0 10px 15px;
+            }
+            
+            .section h2 {
+                text-align: center;
+                display: block;
+                padding-left: 0;
+            }
+            
+            .education-container, .work-container, .projects-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-photo-container {
+                margin: 0 auto 20px;
+            }
+        }
+        
+        /* Decorative corner elements */
+        .container {
+            position: relative;
+            padding: 30px 15px;
+        }
+        
+        .container::before {
+            content: "✧";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            color: var(--primary);
+        }
+        
+        .container::after {
+            content: "✧";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-crown me-2"></i>My Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#personalDetails"><i class="fas fa-sparkles me-1"></i> About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education"><i class="fas fa-graduation-cap me-1"></i> Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#workExperience"><i class="fas fa-briefcase me-1"></i> Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects"><i class="fas fa-magic me-1"></i> Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#additionalInfo"><i class="fas fa-heart me-1"></i> More About Me</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="personalDetails" class="section">
+            <h2><i class="fas fa-sparkles me-2"></i>About Me</h2>
+            <div class="profile-details">
+                <div class="profile-info">
+                    <h3 id="fullName"></h3>
+                    <p id="summary" class="lead"></p>
+                    
+                    <div class="mt-4">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span id="email"></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span id="phone"></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="location"></span>
+                        </div>
+                        <div class="social-links mt-3">
+                            <a id="linkedinLink" href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a id="githubLink" href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-photo-container">
+                    <img id="profilePhoto" src="/api/placeholder/200/200" alt="Profile Photo" class="profile-image">
+                </div>
+            </div>
+        </div>
+
+        <div id="education" class="section">
+            <h2><i class="fas fa-graduation-cap me-2"></i>Education</h2>
+            <div id="educationList" class="education-container"></div>
+        </div>
+
+        <div id="workExperience" class="section">
+            <h2><i class="fas fa-briefcase me-2"></i>Work Experience</h2>
+            <div id="workList" class="work-container"></div>
+        </div>
+
+        <div id="projects" class="section">
+            <h2><i class="fas fa-magic me-2"></i>Projects</h2>
+            <div id="projectList" class="projects-container"></div>
+        </div>
+
+        <div id="additionalInfo" class="section">
+            <h2><i class="fas fa-heart me-2"></i>More About Me</h2>
+            <div class="additional-info-grid">
+                <div class="info-card">
+                    <h4><i class="fas fa-star me-2"></i>Passions</h4>
+                    <p id="hobbies"></p>
+                </div>
+                <div class="info-card">
+                    <h4><i class="fas fa-language me-2"></i>Languages</h4>
+                    <p id="languages"></p>
+                </div>
+                <div class="info-card">
+                    <h4><i class="fas fa-bolt me-2"></i>Activities</h4>
+                    <p id="activities"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const data = JSON.parse(localStorage.getItem("portfolioData")) || {};
+            if (!data.firstName) {
+                alert("No portfolio data found.");
+                window.location.href = "index.html";
+                return;
+            }
+            
+            // Handle the photo display
+            if (data.photo) {
+                const photoElement = document.getElementById("profilePhoto"); 
+                if (photoElement) {
+                    photoElement.src = data.photo;
+                }
+            }
+            
+            // Fill in personal details
+            document.getElementById("fullName").textContent = (data.firstName || "") + " " + (data.lastName || "");
+            document.getElementById("email").textContent = data.email || "N/A";
+            document.getElementById("phone").textContent = data.phone || "N/A";
+            document.getElementById("location").textContent = data.location || "N/A";
+            document.getElementById("summary").textContent = data.summary || "N/A";
+            document.getElementById("hobbies").textContent = data.hobbies || "N/A";
+            document.getElementById("languages").textContent = data.languages || "N/A";
+            document.getElementById("activities").textContent = data.activities || "N/A";
+            
+            // Social links
+            const linkedinLink = document.getElementById("linkedinLink");
+            linkedinLink.href = data.linkedin || "#";
+            linkedinLink.style.display = data.linkedin ? "inline" : "none";
+            
+            const githubLink = document.getElementById("githubLink");
+            githubLink.href = data.github || "#";
+            githubLink.style.display = data.github ? "inline" : "none";
+            
+            // Education
+            const educationList = document.getElementById("educationList");
+            (data.education || []).forEach(edu => {
+                const div = document.createElement("div");
+                div.className = "education-item";
+                
+                const h4 = document.createElement("h4");
+                h4.textContent = `${edu.degree || ''} in ${edu.fieldOfStudy || ''}`;
+                
+                const p = document.createElement("p");
+                p.textContent = `${edu.school || ''} • ${edu.graduationYear || ''}`;
+                
+                div.appendChild(h4);
+                div.appendChild(p);
+                educationList.appendChild(div);
+            });
+
+            // Work Experience
+            const workList = document.getElementById("workList");
+            (data.workExperience || []).forEach(work => {
+                const div = document.createElement("div");
+                div.className = "work-item";
+                
+                const h4 = document.createElement("h4");
+                h4.textContent = work.jobTitle || '';
+                
+                const p = document.createElement("p");
+                p.textContent = `${work.company || ''} • ${work.duration || ''}`;
+                
+                div.appendChild(h4);
+                div.appendChild(p);
+                workList.appendChild(div);
+            });
+
+            // Projects
+            const projectList = document.getElementById("projectList");
+            (data.projects || []).forEach(proj => {
+                const div = document.createElement("div");
+                div.className = "project-item";
+                
+                const h4 = document.createElement("h4");
+                h4.textContent = proj.projectName || '';
+                
+                const p = document.createElement("p");
+                p.textContent = proj.description || '';
+                
+                div.appendChild(h4);
+                div.appendChild(p);
+                projectList.appendChild(div);
+            });
+            
+            // Back to top button functionality
+            const backToTopButton = document.getElementById("backToTop");
+            
+            window.addEventListener("scroll", () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add("visible");
+                } else {
+                    backToTopButton.classList.remove("visible");
+                }
+            });
+            
+            backToTopButton.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+Last edited ju
