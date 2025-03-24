@@ -929,26 +929,52 @@
                 <!-- Education items will be dynamically added here -->
             </div>
         </section>
-        
-        <!-- Work Experience section -->
         <section class="section" id="experience">
             <h2 class="section-title"><i class="fas fa-briefcase"></i> Work Experience</h2>
             <div class="code-lines">
-                async function getExperience() {<br>
-                &nbsp;&nbsp;const jobs = await fetchJobs();<br>
-                &nbsp;&nbsp;return jobs.map(job => job.title);<br>
+                function workExperience() {<br>
+                &nbsp;&nbsp;return {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;years: 5,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;skills: "applied"<br>
+                &nbsp;&nbsp;}<br>
                 }
             </div>
             
             <div class="timeline-container" id="workList">
-                <!-- Work experience items will be dynamically added here -->
+                <!-- Work experience items will be dynamically added here by the JavaScript -->
+                <div class="timeline-item">
+                    <span class="timeline-date">2020 - Present</span>
+                    <h3 class="timeline-title">Senior Full Stack Developer</h3>
+                    <h4 class="timeline-subtitle">Tech Innovations Inc.</h4>
+                    <p class="timeline-content">
+                        Lead developer for multiple client projects. Designed and implemented scalable web applications using React, Node.js, and MongoDB. Managed a team of junior developers and mentored new hires.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">2018 - 2020</span>
+                    <h3 class="timeline-title">Full Stack Developer</h3>
+                    <h4 class="timeline-subtitle">Digital Solutions LLC</h4>
+                    <p class="timeline-content">
+                        Developed full-stack applications for clients in finance and healthcare. Implemented responsive UIs with React and built RESTful APIs with Express and PostgreSQL. Improved application performance by 30% through code optimization.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <span class="timeline-date">2016 - 2018</span>
+                    <h3 class="timeline-title">Junior Web Developer</h3>
+                    <h4 class="timeline-subtitle">WebCraft Studios</h4>
+                    <p class="timeline-content">
+                        Collaborated on frontend development using HTML, CSS, and JavaScript. Assisted in building and maintaining WordPress websites for small businesses. Participated in code reviews and team agile meetings.
+                    </p>
+                </div>
             </div>
         </section>
         
-        <!-- Projects section -->
-        <!-- <section class="section" id="projects">
-            <h2 class="section-title -->
+       
                 </div>
+
+
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
