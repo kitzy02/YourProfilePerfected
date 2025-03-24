@@ -169,35 +169,28 @@
 async function generateAiSuggestions(profileData) {
     const aiSuggestionsContainer = document.getElementById("aiSuggestions");
 
-    // Display a loading message
     aiSuggestionsContainer.textContent = "Generating AI insights...";
 
     try {
-        // Send request to OpenAI API (Replace with your API Key)
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        const response = await fetch("/api/generateAiSuggestions", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer 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` // Replace with your key
             },
-            body: JSON.stringify({
-                model: "gpt-4-turbo",
-                messages: [
-                    { role: "system", content: "You are an AI career advisor." },
-                    { role: "user", content: `Analyze the following profile data and suggest improvements:\n${JSON.stringify(profileData)}` }
-                ],
-                temperature: 0.7
-            })
+            body: JSON.stringify({ profileData })
         });
 
         const result = await response.json();
-        aiSuggestionsContainer.textContent = result.choices[0].message.content || "No suggestions available.";
+        aiSuggestionsContainer.textContent = result.suggestions || "No suggestions available.";
 
     } catch (error) {
         console.error("Error fetching AI suggestions:", error);
         aiSuggestionsContainer.textContent = "Failed to generate AI suggestions.";
     }
 }
+document.getElementById("generatePortfolioBtn").addEventListener("click", function () {
+            window.location.href = "generateportfolio.html";
+        });
 
     </script>
    
