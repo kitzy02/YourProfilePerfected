@@ -251,9 +251,9 @@
             }
         }
         
-        function signupUser() {
-            const username = document.getElementById('signupUsername').value;
-            const email = document.getElementById('signupEmail').value;
+        async function signupUser() {
+            const username = document.getElementById('signupUsername').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
             const password = document.getElementById('signupPassword').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
             
@@ -268,33 +268,26 @@
                 return;
             }
             
-            // Check if username already exists
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const existingUser = users.find(user => user.username === username);
-            
-            if (existingUser) {
-                alert('Username already exists. Please choose another one.');
-                return;
-            }
-            
-            // Create new user
-            const newUser = {
-                username,
-                email,
-                password, // In a real app, this should be hashed
-                dateCreated: new Date().toISOString()
-            };
-            
-            // Add to users array
-            users.push(newUser);
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            // Set as current user
-            localStorage.setItem('currentUser', JSON.stringify(newUser));
-            
-            // Update UI
+            try {
+        const res = await fetch('http://localhost:3000/api/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, password })
+        });
+
+        const data = await res.json();
+        if (data.success) {
             alert('Account created successfully!');
+            localStorage.setItem('currentUser', JSON.stringify({ username, email }));
             checkLoginStatus();
+        } else {
+            alert(data.message);
+        }
+    } catch (error) {
+        console.error(error);
+        alert('Signup failed. Please try again.');
+    }
+         
         }
         
         function loginUser() {
@@ -325,36 +318,23 @@
             localStorage.removeItem('currentUser');
             checkLoginStatus();
         });
-        
         function saveUsername() {
-            const username = document.getElementById("usernameInput").value;
-            if (username) {
-                // Get current user
-                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                
-                // Update display name
-                currentUser.displayName = username;
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                
-                // Update in users array
-                const users = JSON.parse(localStorage.getItem('users')) || [];
-                const userIndex = users.findIndex(u => u.username === currentUser.username);
-                if (userIndex !== -1) {
-                    users[userIndex].displayName = username;
-                    localStorage.setItem('users', JSON.stringify(users));
-                }
-                
-                console.log("Display name saved:", username);
-                document.getElementById("greetingMessage").textContent = `Your profile name has been set to: ${username}`;
-                
-                // Redirect after a short delay
-                setTimeout(() => {
-                    window.location.href = "getstarted.html";
-                }, 2000);
-            } else {
-                alert("Please enter a username.");
-            }
-        }
+    const displayName = document.getElementById("usernameInput").value;
+    if (displayName) {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        currentUser.displayName = displayName;
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        document.getElementById("greetingMessage").textContent = `Your profile name has been set to: ${displayName}`;
+        setTimeout(() => {
+            window.location.href = "getstarted.html";
+        }, 2000);
+    } else {
+        alert("Please enter a username.");
+    }
+} 
+
+        
+    
     </script>
 </body>
 </html>

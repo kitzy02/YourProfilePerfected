@@ -526,22 +526,17 @@
     
     <script>
         window.onload = function() {
-            const username = localStorage.getItem("username");
-    
-            if (username) {
+            const username = localStorage.getItem("usernameInput");
                 document.getElementById("personalizedLink").innerHTML = 
                 `<div class="option-card animated-link">
-                    <a href="click.html?user=${username}" target="_blank" 
+                    <a href="click.html" target="_blank" 
    style="color: white; font-size: 30px; font-family: 'Clarkson', sans-serif; text-decoration: none;">
-    https://your-profile-perfected.vercel.app/${username}
+   https://your-profile-perfected.vercel.app/${username}
 </a>
                     
 
                 </div>`;
-            } else {
-                alert("No username found.");
-                window.location.href = "index.html"; 
-            }
+            
         };
         
         function redirectToPortfolio() {
