@@ -226,6 +226,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Started</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -627,7 +630,7 @@
                         </div>
                         <div class="section-divider"></div>
                         <div class="mb-3">
-                            <label for="activities" class="form-label"><strong>Extra-Curricular Activities:</strong></label>
+                            <label for="activities" class="form-label"><strong>Technical skills:</strong></label>
                             <input type="text" class="form-control" id="activities">
                         </div>
                     </div>
@@ -710,6 +713,58 @@ document.getElementById("submitButton").addEventListener("click", function () {
         // No photo was uploaded, continue with the form submission
         saveFormDataAndRedirect(formData);
     }
+    function generateAISuggestions(data) {
+    const suggestions = [];
+
+    if (!data.linkedin) {
+        suggestions.push("Consider adding your LinkedIn profile to showcase your professional presence.");
+    }
+
+   
+    if (!data.github) {
+        suggestions.push("Link your GitHub profile — recruiters often look at code quality and activity.");
+    }
+
+
+    if (!data.education || data.education.length === 0) {
+        suggestions.push("Make sure to list your highest education along with relevant coursework if possible.");
+    }
+
+    // --- Visual & Structural Suggestions ---
+    suggestions.push("Consider learning TypeScript — it's becoming a standard in large-scale JavaScript applications.");
+suggestions.push("Explore Next.js for building production-grade React apps with SSR, SSG, and edge functions.");
+suggestions.push("Tailwind CSS is a popular utility-first CSS framework that simplifies modern styling.");
+suggestions.push("Learn tools like Lighthouse and Web Vitals to improve page speed and SEO.");
+suggestions.push("Integrate generative AI APIs (like ChatGPT or HuggingFace) into projects to stay ahead in the AI-first world.");
+suggestions.push("Deepen your backend skills by mastering MongoDB along with Mongoose for schema modeling.");
+suggestions.push("Understanding Docker and CI/CD pipelines is crucial for scalable app deployment.");
+suggestions.push("Secure your apps with token-based authentication using JWT or OAuth flows.");
+suggestions.push("GraphQL is gaining popularity as an alternative to REST APIs — consider learning it for API design.");
+    suggestions.push("Set up SEO basics: title tags, meta descriptions, and Open Graph preview.");
+suggestions.push("Ensure fast load time — optimize image sizes and lazy-load heavy elements.");
+suggestions.push("Add social media buttons for networking platforms like LinkedIn, GitHub, and Twitter.");
+    suggestions.push("Keep your GitHub active with consistent commits and well-documented repos.");
+suggestions.push("Use consistent fonts and colors throughout the portfolio for a clean look.");
+suggestions.push("Get hands-on with cloud platforms like AWS, Azure, or GCP.");
+suggestions.push("Highlight your top 2–3 skills or areas of expertise right on the homepage.");
+suggestions.push("Add animations or transitions subtly to improve visual engagement.");
+suggestions.push("Join open source projects to build experience and grow your network.");
+suggestions.push("Add internships, freelance gigs, or volunteer work to show practical exposure.");
+suggestions.push("Break large blocks of text into bullet points to improve readability.");
+suggestions.push("Use action verbs in your experience section like 'Built', 'Led', 'Created', 'Improved' to convey impact.");
+suggestions.push("Showcase data analysis projects using Python, Pandas, and Jupyter Notebooks.");
+suggestions.push("Share your Kaggle profile or any data competitions you've participated in.");
+suggestions.push("Make sure your site is mobile-responsive for better accessibility.");
+
+    if (data.summary && data.summary.length < 50) {
+        suggestions.push("Expand your summary to give a clearer picture of your background.");
+    }
+    // Save the suggestions in localStorage
+    
+    return suggestions; 
+    
+}
+
     
     function saveFormDataAndRedirect(data) {
         // Capture education data
@@ -756,263 +811,14 @@ document.getElementById("submitButton").addEventListener("click", function () {
 
         // Save form data in localStorage
         localStorage.setItem("portfolioData", JSON.stringify(data));
+        const suggestions = generateAISuggestions(data);
+localStorage.setItem("aiSuggestions", JSON.stringify(suggestions));
+alert("Portfolio Data Saved Successfully!");
+window.location.href = "ai.html"; 
 
-        // Redirect to a new page or show confirmation
-        alert("Portfolio Data Saved Successfully!");
-        window.location.href = "ai.html"; // Redirect to the portfolio page
     }
 });
-// document.getElementById("submitButton").addEventListener("click", function () {
-//     const formData = {
-//         firstName: document.getElementById("firstName").value,
-//         lastName: document.getElementById("lastname").value,
-//         email: document.getElementById("email").value,
-//         phone: document.getElementById("phone").value,
-//         location: document.getElementById("location").value,
-//         leetcode: document.getElementById("leetcode").value,
-//         linkedin: document.getElementById("linkedin").value,
-//         github: document.getElementById("github").value,
-//         summary: document.getElementById("summary").value,
-//         hobbies: document.getElementById("hobbies").value,
-//         languages: document.getElementById("languages").value,
-//         activities: document.getElementById("activities").value,
-//         education: [],
-//         workExperience: [],
-//         projects: [],
-//     };
 
-//     // Capture education data
-//     const educationRows = document.querySelectorAll(".option-card:nth-of-type(2) tbody tr");
-//     educationRows.forEach(row => {
-//         // Skip empty rows
-//         if (!row.querySelector("td:nth-child(1) input").value) return;
-        
-//         const rowData = {
-//             school: row.querySelector("td:nth-child(1) input").value,
-//             degree: row.querySelector("td:nth-child(2) input").value,
-//             fieldOfStudy: row.querySelector("td:nth-child(3) input").value,
-//             graduationYear: row.querySelector("td:nth-child(4) input").value
-//         };
-//         formData.education.push(rowData);
-//     });
-
-//     // Capture work experience data
-//     const workRows = document.querySelectorAll(".option-card:nth-of-type(3) tbody tr");
-//     workRows.forEach(row => {
-//         // Skip empty rows
-//         if (!row.querySelector("td:nth-child(1) input").value) return;
-        
-//         const rowData = {
-//             jobTitle: row.querySelector("td:nth-child(1) input").value,
-//             company: row.querySelector("td:nth-child(2) input").value,
-//             duration: row.querySelector("td:nth-child(3) input").value
-//         };
-//         formData.workExperience.push(rowData);
-//     });
-
-//     // Capture project data
-//     const projectRows = document.querySelectorAll(".option-card:nth-of-type(4) tbody tr");
-//     projectRows.forEach(row => {
-//         // Skip empty rows
-//         if (!row.querySelector("td:nth-child(1) input").value) return;
-        
-//         const rowData = {
-//             projectName: row.querySelector("td:nth-child(1) input").value,
-//             description: row.querySelector("td:nth-child(2) input").value
-//         };
-//         formData.projects.push(rowData);
-//     });
-
-//     // Save form data in localStorage
-//     localStorage.setItem("portfolioData", JSON.stringify(formData));
-
-//     // Redirect to a new page or show confirmation
-//     alert("Portfolio Data Saved Successfully!");
-//     window.location.href = "generateportfolio.html"; // Redirect to the portfolio page
-// });
     </script>
 </body>
 </html>
-
-    <!-- <script>
-        // Script to scroll to top on page reload
-        window.onload = function() {
-            window.scrollTo(0, 0);
-        }
-        
-        // Force scroll to top on page refresh
-        window.addEventListener('beforeunload', function() {
-            window.scrollTo(0, 0);
-        });
-        
-        // Add row buttons functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const addRowButtons = document.querySelectorAll('.add-row-btn');
-            
-            addRowButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const table = this.previousElementSibling.querySelector('table');
-                    const tbody = table.querySelector('tbody');
-                    const lastRow = tbody.querySelector('tr:last-child');
-                    const newRow = lastRow.cloneNode(true);
-                    
-                    // Clear inputs in the new row
-                    newRow.querySelectorAll('input').forEach(input => {
-                        input.value = '';
-                    });
-                    
-                    tbody.appendChild(newRow);
-                });
-            });
-        });
-        document.getElementById("submitButton").addEventListener("click", async function () {
-    const formData = {
-        firstName: document.getElementById("firstName").value,
-        middleName: document.getElementById("middleName").value,
-        lastName: document.getElementById("lastName").value,
-        phone: document.getElementById("phone").value,
-        email: document.getElementById("email").value,
-        location: document.getElementById("location").value,
-        linkedin: document.getElementById("linkedin").value,
-        github: document.getElementById("github").value,
-        summary: document.getElementById("summary").value,
-        education: Array.from(document.querySelectorAll(".option-card:nth-of-type(2) tbody tr")).map(row => ({
-            school: row.cells[0].querySelector("input").value,
-            degree: row.cells[1].querySelector("input").value,
-            field: row.cells[2].querySelector("input").value,
-            graduationYear: row.cells[3].querySelector("input").value,
-        })),
-        experience: Array.from(document.querySelectorAll(".option-card:nth-of-type(3) tbody tr")).map(row => ({
-            jobTitle: row.cells[0].querySelector("input").value,
-            company: row.cells[1].querySelector("input").value,
-            duration: row.cells[2].querySelector("input").value,
-        })),
-        projects: Array.from(document.querySelectorAll(".option-card:nth-of-type(4) tbody tr")).map(row => ({
-            projectName: row.cells[0].querySelector("input").value,
-            description: row.cells[1].querySelector("input").value,
-        })),
-        hobbies: document.getElementById("hobbies").value,
-        languages: document.getElementById("languages").value,
-        activities: document.getElementById("activities").value,
-    };
-
-    try {
-        const response = await fetch("http://localhost:5000/save-profile", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-        });
-
-        const result = await response.json();
-        if (response.ok) {
-            alert(result.message);
-            window.location.href = "generateportfolio.html"; // Redirect after successful save
-        } else {
-            alert("Error: " + result.error);
-        }
-    } catch (error) {
-        console.error("Error saving profile:", error);
-        alert("Failed to save profile");
-    }
-});
-
-    </script> -->
-    <!-- <script>
-        // Script to scroll to top on page reload
-        window.onload = function() {
-            window.scrollTo(0, 0);
-        }
-    
-        // Force scroll to top on page refresh
-        window.addEventListener('beforeunload', function() {
-            window.scrollTo(0, 0);
-        });
-
-
-
-        
-    
-        // Add row buttons functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const addRowButtons = document.querySelectorAll('.add-row-btn');
-    
-            addRowButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const table = this.previousElementSibling.querySelector('table');
-                    const tbody = table.querySelector('tbody');
-                    const lastRow = tbody.querySelector('tr:last-child');
-                    const newRow = lastRow.cloneNode(true);
-    
-                    // Clear inputs in the new row
-                    newRow.querySelectorAll('input').forEach(input => {
-                        input.value = '';
-                    });
-    
-                    tbody.appendChild(newRow);
-                });
-            });
-        });
-    
-        document.getElementById("submitButton").addEventListener("click", function () {
-            const formData = {
-                firstName: document.getElementById("firstName").value,
-                middleName: document.getElementById("email").value,
-                lastName: document.getElementById("leetcode").value,
-                phone: document.getElementById("phone").value,
-                email: document.getElementById("lastname").value,
-                location: document.getElementById("location").value,
-                linkedin: document.getElementById("linkedin").value,
-                github: document.getElementById("github").value,
-                summary: document.getElementById("summary").value,
-                hobbies: document.getElementById("hobbies").value,
-                languages: document.getElementById("languages").value,
-                activities: document.getElementById("activities").value,
-                education: [],
-                workExperience: [],
-                projects: [],
-            };
-    
-            // Capture education data
-            const educationRows = document.querySelectorAll(".education-table tbody tr");
-            educationRows.forEach(row => {
-                const rowData = {
-                    school: row.querySelector("td:nth-child(1) input").value,
-                    degree: row.querySelector("td:nth-child(2) input").value,
-                    fieldOfStudy: row.querySelector("td:nth-child(3) input").value,
-                    graduationYear: row.querySelector("td:nth-child(4) input").value
-                };
-                formData.education.push(rowData);
-            });
-    
-            // Capture work experience data
-            const workRows = document.querySelectorAll(".work-table tbody tr");
-            workRows.forEach(row => {
-                const rowData = {
-                    jobTitle: row.querySelector("td:nth-child(1) input").value,
-                    company: row.querySelector("td:nth-child(2) input").value,
-                    duration: row.querySelector("td:nth-child(3) input").value
-                };
-                formData.workExperience.push(rowData);
-            });
-    
-            // Capture project data
-            const projectRows = document.querySelectorAll(".project-table tbody tr");
-            projectRows.forEach(row => {
-                const rowData = {
-                    projectName: row.querySelector("td:nth-child(1) input").value,
-                    description: row.querySelector("td:nth-child(2) input").value
-                };
-                formData.projects.push(rowData);
-            });
-    
-            // Save form data in localStorage
-            localStorage.setItem("portfolioData", JSON.stringify(formData));
-    
-            // Redirect to a new page or show confirmation
-            alert("Portfolio Data Saved Successfully!");
-            window.location.href = "generateportfolio.html"; // Redirect to the portfolio page or another page
-        });
-    </script>
-    
-</body>
-</html> -->

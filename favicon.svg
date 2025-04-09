@@ -1,0 +1,20 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Circle -->
+    <circle cx="16" cy="16" r="15" fill="#CBDDEC" />
+    
+    <!-- Profile Silhouette -->
+    <path d="M16 8C13.79 8 12 9.79 12 12C12 14.21 13.79 16 16 16C18.21 16 20 14.21 20 12C20 9.79 18.21 8 16 8Z" fill="#bb6fd8" />
+    
+    <!-- Document/Portfolio Below -->
+    <path d="M24 21.5C24 20.12 22.88 19 21.5 19H10.5C9.12 19 8 20.12 8 21.5V24H24V21.5Z" fill="#bb6fd8" />
+    
+    <!-- Sparkle Elements -->
+    <path d="M23 10L24 11L25 10L24 9L23 10Z" fill="#bb6fd8" />
+    <path d="M7 18L8 19L9 18L8 17L7 18Z" fill="#bb6fd8" />
+    
+    <!-- Check Mark/Perfection Symbol -->
+    <path d="M22 15.5L20 13.5L19 14.5L20 15.5L19 16.5L20 17.5L22 15.5Z" fill="#CBDDEC" stroke="#bb6fd8" stroke-width="0.5" />
+    
+    <!-- Border -->
+    <circle cx="16" cy="16" r="15" fill="none" stroke="#bb6fd8" stroke-width="1.5" />
+  </svg>
